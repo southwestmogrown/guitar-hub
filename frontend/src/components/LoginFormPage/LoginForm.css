@@ -79,3 +79,7 @@ input {
     color: black;
     background-color: lightgrey;   
 }
+
+.login-form li {
+    color: rgb(235, 74, 74);
+}
