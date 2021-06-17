@@ -70,7 +70,7 @@ function SignupFormPage() {
                         <label htmlFor='confirm-password-input'>Confirm Password</label>
                         <input
                             className='confirm-password-input'
-                            type='confirm-password'
+                            type='password'
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
