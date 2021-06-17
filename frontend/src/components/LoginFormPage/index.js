@@ -35,7 +35,7 @@ function LoginFormPage() {
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                     <div className='credential-container'>
-                        <label htmlFor='credential-input'>Username or email:  </label>
+                        <label htmlFor='credential-input'>Username or Email</label>
                         <input 
                             className='credential-input'
                             type='text'
@@ -45,7 +45,7 @@ function LoginFormPage() {
                         />
                     </div>
                     <div className='password-container'>
-                        <label htmlFor='password-input'>Password:  </label>
+                        <label htmlFor='password-input'>Password</label>
                         <input
                             className='password-input'
                             type='password'
