@@ -22,41 +22,42 @@ function LoginFormPage() {
         setErrors([]);
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
-                const data = res.json();
+                const data = await res.json();
                 if(data && data.errors) setErrors(data.errors);
             });
     };
-
     return (
-        <div className='login-form-container'>
-            <form onSubmit={handleSubmit} className='login-form'>
-                <ul>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <div className='credential-container'>
-                    <label for='credential-input'>Username or email:  </label>
-                    <input 
-                        className='credential-input'
-                        type='text'
-                        value={credential}
-                        onChange={(e) => setCredential(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className='password-container'>
-                    <label for='password-input'>Password:  </label>
-                    <input
-                        className='password-input'
-                        type='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className='login-btn-container'>
-                    <button className='login-btn' type='submit'>Log In</button>
-                </div>
-            </form>    
+        <div className='login-form-main'>
+            <div className='login-form-container'>
+                <form onSubmit={handleSubmit} className='login-form'>
+                    <ul>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                    <div className='credential-container'>
+                        <label for='credential-input'>Username or email:  </label>
+                        <input 
+                            className='credential-input'
+                            type='text'
+                            value={credential}
+                            onChange={(e) => setCredential(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className='password-container'>
+                        <label for='password-input'>Password:  </label>
+                        <input
+                            className='password-input'
+                            type='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className='login-btn-container'>
+                        <button className='login-btn' type='submit'>Log In</button>
+                    </div>
+                </form>    
+            </div>
         </div>
     );
 };
