@@ -80,21 +80,6 @@ input {
     box-shadow: 4px 2px 2px  rgba(0, 0, 0, 0.5);
 }
 
-.login-btn {
-    border: 1px solid lightgrey;
-    margin-right: 20px;
-    color: white;
-    background-color: black;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    box-shadow: 4px 2px 2px  rgba(0, 0, 0, 0.5);
-}
-
-.login-btn:hover {
-    border: 1px solid black;
-    color: black;
-    background-color: lightgrey;   
-}
 
 .login-form li {
     color: rgb(235, 74, 74);

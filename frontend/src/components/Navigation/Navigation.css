@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: rgb(121, 120, 120);
 }
 
 .nav-bar {
@@ -18,8 +18,8 @@ body {
     width: 100vw;
 }
 
-.home-icon {
-    font-size: xx-large;
+.home {
+    margin-left: 20px;
     height: 50px;
     width: 50px;
     display: flex;
@@ -28,9 +28,10 @@ body {
     background-color: rgb(87, 85, 85);
 }
 
-.home {
+.home-btn {
     color: rgb(255, 5, 5);
     background-color: rgb(87, 85, 85);
+    font-size: xx-large;
 }
 
 .profile-button-container {
@@ -41,6 +42,12 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(87, 85, 85);
+    font-size: xx-large;
+    margin-right: 10px;
+}
+
+.profile-btn {
+    color: rgb(0, 255, 0);
     font-size: xx-large;
     margin-right: 10px;
 }
