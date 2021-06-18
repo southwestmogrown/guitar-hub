@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/southwestmogrown/guitar-hub/issues"
   },
-  "homepage": "https://github.com/southwestmogrown/guitar-hub#readme"
+  "homepage": "https://github.com/southwestmogrown/guitar-hub#readme",
+  "dependencies": {
+    "react-audio-player": "^0.17.0"
+  }
 }
