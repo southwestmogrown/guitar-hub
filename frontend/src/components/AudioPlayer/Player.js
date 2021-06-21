@@ -1,17 +1,33 @@
 import React, {useState, useRef, useEffect} from 'react'
 import PlayerDetails from './PlayerDetails';
 import PlayerControls from './PlayerControls';
+import ProgressBar from './ProgressBar';
 
 
 function Player(props) {
-    const audioEl = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [percentage, setPercentage] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [duration, setDuration] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0);
+    
+    const audioRef = useRef();
+    
+
+    const onChange = (e) => {
+        const audio = audioRef.current;
+        audio.currentTime = (audio.duration / 100) * e.target.value;
+        setPercentage(e.target.value);
+    }
+    
+    
+
+
 
     useEffect(() => {
         if(isPlaying) {
-            audioEl.current.play();
+            audioRef.current.play();
         } else {
-            audioEl.current.pause();
+            audioRef.current.pause();
         }
     });
 
@@ -37,16 +53,35 @@ function Player(props) {
         }
     };
 
+    const getCurrentDuration = (e) => {
+        const percent = ((e.currentTarget.currentTime / e.currentTarget.duration) * 100).toFixed(2);
+        const time = e.currentTarget.currentTime;
+
+        setPercentage(+percent)
+        setCurrentTime(time.toFixed(2))
+    }
+
     
     return (
         <div className='c-player'>
-            <audio src={props.songs[props.currentSongIndex].src} ref={audioEl}></audio>
+            <audio 
+                src={props.songs[props.currentSongIndex].src} 
+                ref={audioRef}
+                onLoadedData={e => {
+                    setDuration(e.currentTarget.duration.toFixed(2))
+                }}
+                onTimeUpdate={getCurrentDuration}
+            ></audio>
             <h4>Playing now: </h4>
             <PlayerDetails song={props.songs[props.currentSongIndex]} />
+            <ProgressBar  onChange={onChange} percentage={percentage} />
             <PlayerControls 
+                song={props.songs[props.currentSongIndex]}
                 isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}
                 SkipSong={SkipSong}
+                duration={duration}
+                currentTime={currentTime}
             />
             <p><strong>Next up: </strong>{props.songs[props.nextSongIndex].title}</p>
         </div>
