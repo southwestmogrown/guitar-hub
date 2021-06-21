@@ -1,0 +1,18 @@
+import React from 'react'
+import PlayerDetails from './PlayerDetails';
+import PlayerControls from './PlayerControls';
+
+
+function Player(props) {
+    return (
+        <div className='c-player'>
+            <audio></audio>
+            <h4>Playing now: </h4>
+            <PlayerDetails song={props.song} />
+            <PlayerControls/>
+            <p><strong>Next up: </strong>{props.nextSong.title}</p>
+        </div>
+    )
+}
+
+export default Player

@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ReactAudioPlayer from 'react-audio-player';
 
-import AudioPlayer from '../AudioPlayer/AudioPlayer';
+import AudioPlayer from '../AudioPlayer';
+import './UserHomePage.css';
  
 function UserHomePage() {
     
@@ -11,9 +12,7 @@ function UserHomePage() {
 
     
     return(
-        <div className='audio-player'>
-            <div className='title'>Title</div>
-            <div className='artist'>Artist</div>
+        <div className='audio-player--container'>
             <AudioPlayer />
         </div>
         
