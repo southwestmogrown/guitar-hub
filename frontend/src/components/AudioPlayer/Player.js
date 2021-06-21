@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef, useEffect, useCallback } from 'react'
 import PlayerDetails from './PlayerDetails';
 import PlayerControls from './PlayerControls';
 import ProgressBar from './ProgressBar';
@@ -19,19 +19,7 @@ function Player(props) {
         setPercentage(e.target.value);
     }
     
-    
-
-
-
-    useEffect(() => {
-        if(isPlaying) {
-            audioRef.current.play();
-        } else {
-            audioRef.current.pause();
-        }
-    });
-
-    const SkipSong = (forwards = true) => {
+    const SkipSong = useCallback((forwards = true) => {
         if(forwards) {
             props.setCurrentSongIndex(() => {
                 let temp = props.currentSongIndex;
@@ -51,8 +39,20 @@ function Player(props) {
             }
             return temp;
         }
-    };
+    }, [props]);
 
+    
+    useEffect(() => {
+        
+        if(isPlaying) {
+            audioRef.current.play();    
+        } else {
+            audioRef.current.pause();
+        }
+    }, [isPlaying, SkipSong]);
+
+
+    
     const getCurrentDuration = (e) => {
         const percent = ((e.currentTarget.currentTime / e.currentTarget.duration) * 100).toFixed(2);
         const time = e.currentTarget.currentTime;
@@ -60,7 +60,6 @@ function Player(props) {
         setPercentage(+percent)
         setCurrentTime(time.toFixed(2))
     }
-
     
     return (
         <div className='c-player'>
@@ -82,6 +81,7 @@ function Player(props) {
                 SkipSong={SkipSong}
                 duration={duration}
                 currentTime={currentTime}
+                nextSong={props.songs[props.nextSongIndex]}
             />
             <p><strong>Next up: </strong>{props.songs[props.nextSongIndex].title}</p>
         </div>
