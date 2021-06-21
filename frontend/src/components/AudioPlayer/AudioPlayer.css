@@ -6,3 +6,12 @@
     justify-content: center;
     min-height: 100vh;
 }
+
+.c-player {
+    color: blanchedalmond;
+    display: block;
+    background-color: #313131;
+    padding: 50px;
+    border-radius: 16px;
+}
+
