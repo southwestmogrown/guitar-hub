@@ -7,7 +7,7 @@ import Player from './Player';
 
 import './AudioPlayer.css'
 
-function AudioPlayer() {
+function AudioPlayer(props) {
     const [songs, setSongs] = useState([
         {
             title: 'For the People of the Desert',
@@ -23,6 +23,8 @@ function AudioPlayer() {
         }
     ]);
 
+    console.log(props)
+
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
     
@@ -34,7 +36,7 @@ function AudioPlayer() {
                 return currentSongIndex + 1;
             }
         })
-    }, [currentSongIndex])
+    }, [currentSongIndex, songs.length])
 
     return (
         <div id='audio-player'>
