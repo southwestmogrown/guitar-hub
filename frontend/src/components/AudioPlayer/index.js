@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import ForThePeople from '../../music-assets/for-the-people-of-the-desert.mp3';
-import OuterSpace from '../../music-assets/outer space 2.0.mp3'
-import TheSea from '../../music-assets/the-sea-wasnt-intended-for-you.mp3'
+import ForThePeople from '../../../src/media/for-the-people-of-the-desert.mp3';
+import OuterSpace from '../../../src/media/outer space 2.0.mp3'
+import TheSea from '../../../src/media/the-sea-wasnt-intended-for-you.mp3'
 import Player from './Player';
 
 import './AudioPlayer.css'

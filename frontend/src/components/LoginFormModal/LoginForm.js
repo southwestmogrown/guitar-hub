@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 
 import './LoginForm.css';
 
@@ -9,6 +10,7 @@ function LoginForm() {
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -48,7 +50,7 @@ function LoginForm() {
                         />
                     </div>
                     <div className='login-btn-container'>
-                        <button className='login-btn' type='submit'>Log In</button>
+                        <button className='login-btn' type='submit' onClick={() => history.push('/users')}>Log In</button>
                     </div>
                 </form>    
             </div>

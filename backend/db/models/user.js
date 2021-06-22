@@ -32,6 +32,9 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       },
     },
+    photoUrl: {
+      type: DataTypes.STRING(255)
+    },
   },
   {
     defaultScope: {

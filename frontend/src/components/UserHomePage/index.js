@@ -1,22 +1,31 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ReactAudioPlayer from 'react-audio-player';
 
 import AudioPlayer from '../AudioPlayer';
 import './UserHomePage.css';
+import bill from '../../media/Bill-Murray-Golf.jpg'
  
 function UserHomePage() {
+    const sessionUser = useSelector(state => state.session.user)
+
+    console.log(sessionUser.photoUrl)
     
 
 
-    
-    return(
-        <div className='audio-player--container'>
-            <AudioPlayer />
-        </div>
+    if(sessionUser) {
+        return(
+            <>
+                <div>
+                    <img src={bill} alt={sessionUser.username}></img>
+                </div>
+                <div className='audio-player--container'>
+                    <AudioPlayer />
+                </div>
+            </>
+
+        )       
+    }
         
-    )
 }
 
 export default UserHomePage;

@@ -2,17 +2,24 @@
 
 #audio-player {
     display: flex;
+    align-items: flex-start;
+    height: 100px;
+}
+
+.audio-player--container {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    justify-content: flex-end;
+    
 }
 
 .c-player {
+    font-size: smaller;
     color: blanchedalmond;
-    display: block;
-    width: 500px;
+    margin-right: 5px;
+    min-width: 400px;
     background-color: #313131;
-    padding: 30px 50px;
+    padding: 10px 20px;
     border-radius: 10px;
 }
 

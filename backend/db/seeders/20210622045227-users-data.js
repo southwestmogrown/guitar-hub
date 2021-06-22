@@ -10,7 +10,8 @@ module.exports = {
     {
       email: 'demo@user.io',
       username: 'Demo-lition',
-      hashedPassword: bcrypt.hashSync('password')
+      hashedPassword: bcrypt.hashSync('password'),
+      photoUrl: 'frontend/src/images/Bill-Murray-Golf.jpg'
     },
     {
       email: faker.internet.email(),
@@ -37,4 +38,4 @@ module.exports = {
       username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2', 'FakeUser3'] }
     }, {});
   }
-};
+}

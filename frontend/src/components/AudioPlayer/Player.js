@@ -45,9 +45,9 @@ function Player(props) {
     useEffect(() => {
         
         if(isPlaying) {
-            audioRef.current.play();    
+            audioRef.current.play();
         } else {
-            audioRef.current.pause();
+            audioRef.current.pause();     
         }
     }, [isPlaying, SkipSong]);
 
@@ -81,7 +81,6 @@ function Player(props) {
                 SkipSong={SkipSong}
                 duration={duration}
                 currentTime={currentTime}
-                nextSong={props.songs[props.nextSongIndex]}
             />
             <p><strong>Next up: </strong>{props.songs[props.nextSongIndex].title}</p>
         </div>

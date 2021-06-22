@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 
 function DemoLogin() {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("Demo-lition");
     const [password, setPassword] = useState('password');
+    // const [photoUrl, setPhotoUrl] = useState('frontend/src/music-assets/Bill-Murray-Golf.jpg')
+    const history = useHistory()
+    
 
     const [errors, setErrors] = useState([]);
 
@@ -13,10 +18,11 @@ function DemoLogin() {
         e.preventDefault();
         setErrors([]);
         return dispatch(sessionActions.login({ credential, password }))
-          .catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-          });
+            .then(() => history.push('/users'))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+             });
       }
     
 
