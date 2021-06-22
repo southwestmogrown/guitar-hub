@@ -1,14 +1,16 @@
-// const express = require('express');
-// const asyncHandler = require('express-async-handler');
+const express = require('express');
+const asyncHandler = require('express-async-handler');
 
-// const { User } = require('../../db/models');
-// console.log(User)
-
-// const router = express.Router();
+const { Track } = require('../../db/models')
 
 
-// router.get('/', asyncHandler(async(req, res) => {
-//     res.send('howdy')
-// }))
+const router = express.Router();
 
-// module.exports = router;
+
+router.get('/', asyncHandler(async(req, res) => {
+    const tracks = await Track.findAll();
+
+    return res.json({tracks})
+}))
+
+module.exports = router;
