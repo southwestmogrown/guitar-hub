@@ -8,7 +8,6 @@ function DemoLogin() {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("Demo-lition");
     const [password, setPassword] = useState('password');
-    // const [photoUrl, setPhotoUrl] = useState('frontend/src/music-assets/Bill-Murray-Golf.jpg')
     const history = useHistory()
     
 

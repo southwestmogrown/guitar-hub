@@ -6,17 +6,17 @@ import './UserHomePage.css';
 import bill from '../../media/Bill-Murray-Golf.jpg'
  
 function UserHomePage() {
-    const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector(state => state.session.user);
 
-    console.log(sessionUser.photoUrl)
+    // console.log(sessionUser.photoUrl)
     
 
 
     if(sessionUser) {
         return(
             <>
-                <div>
-                    <img src={bill} alt={sessionUser.username}></img>
+                <div className='profile-img'>
+                    <img className='profile' src={bill} alt={sessionUser.username}></img>
                 </div>
                 <div className='audio-player--container'>
                     <AudioPlayer />

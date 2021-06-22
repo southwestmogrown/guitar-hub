@@ -5,9 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },  
-    songId: {
-      type: DataTypes.INTEGER,
-    },
     title: {
       type: DataTypes.STRING(100),
       allowNull: false,
@@ -25,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Track.associate = function(models) {
     Track.belongsTo(models.User, { foreignKey: 'userId' });
+    Track.hasMany(models.Comment, { foreignKey: 'trackId'});
   };
   return Track;
 };

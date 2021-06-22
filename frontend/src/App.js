@@ -6,6 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 import UserHomePage from "./components/UserHomePage";
+import UsersInfo from './components/UsersInfo'; 
+// import * as userActions from './store/users'
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +26,9 @@ function App() {
           </Route>
           <Route path='/users'>
             <UserHomePage />
+          </Route>
+          <Route path='/_users'>
+            <UsersInfo />
           </Route>
         </Switch>
       )}
