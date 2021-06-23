@@ -1,0 +1,18 @@
+
+#track-player {
+    display: flex;
+    align-items: flex-start;
+    height: 100px;
+}
+
+
+
+.track {
+    font-size: smaller;
+    color: blanchedalmond;
+    margin-right: 5px;
+    min-width: 400px;
+    background-color: #313131;
+    padding: 10px 20px;
+    border-radius: 10px;
+}

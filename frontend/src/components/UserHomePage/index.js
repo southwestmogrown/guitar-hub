@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 import './UserHomePage.css';
 import bill from '../../media/Bill-Murray-Golf.jpg'
 import TrackPlayer from '../TrackPlayer';
+import AudioPlayer from '../AudioPlayer';
  
 function UserHomePage(tracks) {
     const sessionUser = useSelector(state => state.session.user);
@@ -22,8 +23,11 @@ function UserHomePage(tracks) {
                     <div className='profile-img'>
                         <img className='profile' src={bill} alt={sessionUser.username}></img>
                     </div>
-                    <div className='track-player--container'>
+                    {/* <div className='track-player--container'>
                         <TrackPlayer tracks={tracks} user={sessionUser}/>
+                    </div> */}
+                    <div>
+                        <AudioPlayer />
                     </div>
                 </div>
             </div>

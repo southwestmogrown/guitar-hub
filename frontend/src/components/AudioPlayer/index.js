@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import ForThePeople from '../../../src/media/for-the-people-of-the-desert.mp3';
 import OuterSpace from '../../../src/media/outer space 2.0.mp3'
@@ -8,6 +9,10 @@ import Player from './Player';
 import './AudioPlayer.css'
 
 function AudioPlayer(tracks) {
+
+    const user = useSelector(state => state.session.user)
+    console.log(user)
+
     const [songs, setSongs] = useState([
         {
             title: 'For the People of the Desert',

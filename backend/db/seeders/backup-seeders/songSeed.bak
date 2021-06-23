@@ -8,19 +8,19 @@ module.exports = {
     userId: 1,
     title: 'Caught You Lookin',
     imageUrl: '/images/Bill-Murray-Golf.jpg',
-    songUrl: '/media/caught you lookin.mp3'
+    songUrl: '/media/caught-you-lookin.mp3'
   },
   {
     userId: 1,
     title: 'The Definition of Insanity',
     imageUrl: '/images/Bill-Murray-Golf.jpg',
-    songUrl: '/media/the definition of insanity 2.0.mp3'
+    songUrl: '/media/the-definition-of-insanity.mp3'
   },
   {
     userId: 1,
     title: 'Synesthesia',
     imageUrl: '/images/Bill-Murray-Golf.jpg',
-    songUrl: '/media/synesthesia redux.mp3'
+    songUrl: '/media/synesthesia.mp3'
   },
   ], {});
   },

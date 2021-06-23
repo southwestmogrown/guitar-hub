@@ -9,6 +9,7 @@ import * as sessionActions from './store/session';
 // import UserHomePage from "./components/UserHomePage";
 import UsersInfo from './components/UsersInfo'; 
 import HomePage from "./components/HomePage";
+import './index.css'
 // import * as userActions from './store/users'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             </Route>
           </Switch>
         )}
+        <HomePage />
       </>
     );
   } else {

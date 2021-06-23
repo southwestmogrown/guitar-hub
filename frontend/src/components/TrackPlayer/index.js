@@ -1,31 +1,27 @@
 import React from 'react'
-import AudioPlayer from '../AudioPlayer';
+import TPlayer from './TPlayer';
+import '../AudioPlayer/AudioPlayer.css'
+import './TrackPlayer.css';
+
 
 function TrackPlayer(props) {
-    // const tracksArray = tracks.tracks.tracks;
 
     const tracks = props.tracks.tracks
     const user = props.user
-
     const userTracks = [];
-
-    // console.log(userTracks)
 
     tracks.forEach(track => {
         if(track.userId === user.id) {
             userTracks.push(track)
         }
     });
-
-    
-    
     
     return (
-        <div>
-            <ul className='track-player'>
+        <div id='track-player'>
+            <ul >
                 {userTracks.map(track => (
-                    <li key={track.id}>
-                        <AudioPlayer song={track} />
+                    <li className='track' key={track.id}>
+                        <TPlayer track={track} />
                     </li>
                 ))}
             </ul>
