@@ -21,7 +21,7 @@ function Navigation({ isLoaded }) {
             <div className='nav-bar'>
                 <div className='no-user-wrapper'>
                     <div className='demo-wrapper'>
-                        <DemoLogin />
+                        <DemoLogin user={sessionUser}/>
                     </div>
                     <div className='login-container'>
                         <LoginFormModal />

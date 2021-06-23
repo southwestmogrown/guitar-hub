@@ -71,7 +71,6 @@ function Player(props) {
                 }}
                 onTimeUpdate={getCurrentDuration}
             ></audio>
-            <h4>Playing now: </h4>
             <PlayerDetails song={props.songs[props.currentSongIndex]} />
             <ProgressBar  onChange={onChange} percentage={percentage} />
             <PlayerControls 
@@ -82,7 +81,6 @@ function Player(props) {
                 duration={duration}
                 currentTime={currentTime}
             />
-            <p><strong>Next up: </strong>{props.songs[props.nextSongIndex].title}</p>
         </div>
     )
 }

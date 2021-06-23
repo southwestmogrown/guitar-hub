@@ -8,12 +8,10 @@ import UserHomePage from '../UserHomePage';
 
 function UsersInfo() {
     const dispatch = useDispatch();
-    const { userId } = useParams();
     
     useEffect(() => {
         dispatch(userActions.getUsers())
         dispatch(trackActions.getTracks())
-        dispatch(userActions.getOneUser())
     }, [dispatch]);
     
     const tracks = useSelector(state => {
@@ -24,11 +22,6 @@ function UsersInfo() {
         return (
             <div>
                 <UserHomePage tracks={tracks}/>
-                <ul>
-                    {/* {tracks.map(track => (
-                        <li><AudioPlayer track={track} /></li>
-                    ))} */}
-                </ul>
             </div>
         )
 

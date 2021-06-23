@@ -9,3 +9,15 @@
     width: 200px;
     border-radius: 50%;
 }
+
+.track-player {
+    list-style-type: none;
+    margin-left: 25em;
+    margin-top: 5em;
+}
+
+.profile-page {
+    height: 100vh;
+    background-image: url('/home/shane/solo/authenticate-me/frontend/src/media/sound-studo-393042_1920.jpg');
+    position: relative;
+}
