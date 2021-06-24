@@ -42,14 +42,16 @@ function Player(props) {
     // }, [props]);
 
     
-    useEffect(() => {
+    // useEffect(() => {
         
-        if(isPlaying) {
-            audioRef.current.play();
-        } else {
-            audioRef.current.pause();     
-        }
-    }, [isPlaying]);
+    //     if(isPlaying) {
+    //         audioRef.current.play();
+    //     } else {
+    //         audioRef.current.pause();     
+    //     }
+    // }, [isPlaying]);
+
+    const toggle = setPlaying(!playing)
 
 
     

@@ -30,9 +30,10 @@ function UserHomePage() {
             <div className='profile-page'>
                 <div className='layer'>
                     <div className='profile-img'>
+                        <div className='shadow-box'></div>
                         <img className='profile' src={bill} alt={sessionUser.username}></img>
                     </div>
-                    <div>
+                    <div className='profile-audio'>
                         <AudioPlayer tracks={tracks} user={sessionUser}/>
                     </div>
                 </div>

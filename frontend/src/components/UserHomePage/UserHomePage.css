@@ -2,6 +2,7 @@
     height: 0px;
 }
 
+
 .profile {
     margin-top: 2em;
     margin-left: 3em;
@@ -31,3 +32,34 @@
     list-style-type: none;
 }
 
+.profile-audio {
+    position: absolute;
+    left: 500px;
+    top: 75px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.audio-player-list li {
+    margin: 5px;
+}
+
+.profile-img {
+    position: relative;
+    margin-top: 60px;
+    height: 235px;
+    width: 250px;
+}
+
+.shadow-box {
+    border-radius: 50%;
+    margin-top: 32px;
+    margin-left: 48px;
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(252, 252, 252, 0);
+    height: 200px;
+    width: 200px;
+    box-shadow: inset -5px -5px 5px 1px rgba(0, 0, 0, 0.44), inset 5px 5px 5px 1px rgba(255, 254, 254, 0.44)
+}
