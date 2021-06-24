@@ -8,7 +8,7 @@ import Player from './Player';
 
 import './AudioPlayer.css'
 
-function AudioPlayer(props) {
+function AudioPlayer() {
 
     const user = useSelector(state => state.session.user)
     const tracks = useSelector(state => state.tracks.tracks)
@@ -29,22 +29,6 @@ function AudioPlayer(props) {
             src: TheSea
         }
     ]);
-
-    
-
-    const [currentSongIndex, setCurrentSongIndex] = useState(0);
-    const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
-    
-    useEffect(() => {
-        setNextSongIndex(() => {
-            if(currentSongIndex + 1 > songs.length - 1) {
-                return 0;
-            } else {
-                return currentSongIndex + 1;
-            }
-        })
-    }, [currentSongIndex, songs.length]);
-
     
     return (
         <div className='audio'>

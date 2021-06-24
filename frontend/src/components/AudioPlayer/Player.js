@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect, useCallback } from 'react'
+import React, {useState, useRef, useEffect } from 'react'
 import PlayerDetails from './PlayerDetails';
 import PlayerControls from './PlayerControls';
 import ProgressBar from './ProgressBar';
@@ -18,54 +18,14 @@ function Player(props) {
         audio.currentTime = (audio.duration / 100) * e.target.value;
         setPercentage(e.target.value);
     }
-    
-    // const SkipSong = useCallback((forwards = true) => {
-    //     if(forwards) {
-    //         props.setCurrentSongIndex(() => {
-    //             let temp = props.currentSongIndex;
-    //             temp++;
-
-    //             if(temp > props.songs.length - 1) {
-    //                 temp = 0;
-    //             }
-    //             return temp;
-    //         });
-    //     } else {
-    //         let temp = props.currentSongIndex;
-    //         temp--;
-
-    //         if(temp < 0) {
-    //             temp = props.songs.length - 1;
-    //         }
-    //         return temp;
-    //     }
-    // }, [props]);
-
    
-    useEffect(() => {
-        
+    useEffect(() => {      
         if(!isPlaying) {
             audioRef.current.play();
         } else {
             audioRef.current.pause();     
         }
     }, [isPlaying]);
-
-    // const toggle = setIsPlaying(!isPlaying)
-
-    // useEffect(() => {
-    //     isPlaying ? audioRef.current.play() : audioRef.current.pause();
-    // }, [isPlaying]);
-
-    // useEffect(() => {
-    //     audioRef.addEventListener('ended', () => setIsPlaying(false));
-    //     return () => {
-    //         audioRef.addEventListener('ended', () => setIsPlaying(false));
-
-    //     }
-    // }, [])
-
-
     
     const getCurrentDuration = (e) => {
         const percent = ((e.currentTarget.currentTime / e.currentTarget.duration) * 100).toFixed(2);

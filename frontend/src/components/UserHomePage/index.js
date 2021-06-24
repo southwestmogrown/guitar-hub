@@ -5,7 +5,6 @@ import * as trackActions from '../../store/tracks'
 import { Redirect } from 'react-router';
 
 
-// import AudioPlayer from '../AudioPlayer';
 import './UserHomePage.css';
 import bill from '../../media/Bill-Murray-Golf.jpg'
 import AudioPlayer from '../AudioPlayer';
@@ -15,7 +14,6 @@ function UserHomePage() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const tracks = useSelector(state => state.tracks.tracks)
-    // console.log(tracks)
     useEffect(() => {
         dispatch(userActions.getUsers())
         dispatch(trackActions.getTracks())

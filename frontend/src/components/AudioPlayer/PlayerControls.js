@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faForward, faBackward } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 
 
 function PlayerControls(props) {
-    // console.log(props)
+    
     useEffect(() => {
         if (props.currentTime === props.duration) {
             props.setIsPlaying(false)    
-            // props.SkipSong(true)
             props.setIsPlaying(true)
         };
 
@@ -16,16 +15,10 @@ function PlayerControls(props) {
     }, [props])
 
     return (
-        <div className='c-player--controls'> 
-            {/* <button className='skip-btn' onClick={() => props.SkipSong(false)}>
-                <FontAwesomeIcon icon={faBackward} />
-            </button> */}
+        <div className='c-player--controls'>
             <button className='play-btn' onClick={() => props.setIsPlaying(!props.isPlaying)}>
                 <FontAwesomeIcon icon={props.isPlaying ? faPlay : faPause } />
-            </button> 
-            {/* <button className='skip-btn' onClick={() => props.SkipSong(true)}>
-                <FontAwesomeIcon icon={faForward} />
-            </button> */}
+            </button>
         </div>
     )
 }

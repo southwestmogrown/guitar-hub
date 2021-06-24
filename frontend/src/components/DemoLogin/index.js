@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
@@ -12,13 +11,12 @@ function DemoLogin(user) {
     const [password, setPassword] = useState('password');
     const history = useHistory()
    
-    console.log(user)
+    
     const [errors, setErrors] = useState([]);
 
     
     const sessionUser = useSelector(state => state.session.user);
 
-    console.log(sessionUser)
 
     const handleSubmit = (e) => {
         e.preventDefault();
