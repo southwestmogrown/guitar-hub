@@ -12,6 +12,8 @@ function HomePage() {
         if(user) {
             history.push(`/users/${user.id}`)
         }
+
+        history.push('/')
         return (
             <>
                 <div className='home-page'>

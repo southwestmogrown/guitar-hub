@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import * as userActions from '../../store/users';
 import * as trackActions from '../../store/tracks'
-import { Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 
 
 import './UserHomePage.css';
@@ -10,8 +10,8 @@ import bill from '../../media/Bill-Murray-Golf.jpg'
 import AudioPlayer from '../AudioPlayer';
  
 function UserHomePage() {
-    
-    const dispatch = useDispatch()
+    const history = useHistory();
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const tracks = useSelector(state => state.tracks.tracks);
 
@@ -24,7 +24,7 @@ function UserHomePage() {
 
 
     if(!sessionUser) {
-        return <Redirect to='/' />
+        history.push('/')
     } else {
         return(
             <div className='profile-page'>
