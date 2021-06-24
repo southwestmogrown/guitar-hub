@@ -2,7 +2,6 @@
 
 #audio-player {
     display: flex;
-    align-items: flex-start;
     height: 100px;
 }
 

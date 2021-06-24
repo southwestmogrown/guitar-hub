@@ -8,10 +8,12 @@ import Player from './Player';
 
 import './AudioPlayer.css'
 
-function AudioPlayer(tracks) {
+function AudioPlayer(props) {
 
     const user = useSelector(state => state.session.user)
-    console.log(user)
+    const tracks = useSelector(state => state.tracks.tracks)
+
+    
 
     const [songs, setSongs] = useState([
         {
@@ -28,7 +30,7 @@ function AudioPlayer(tracks) {
         }
     ]);
 
-    // console.log(tracks.tracks)
+    
 
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
@@ -45,13 +47,18 @@ function AudioPlayer(tracks) {
 
     
     return (
-        <div id='audio-player'>
-            <Player 
-                currentSongIndex={currentSongIndex} 
-                setCurrentSongIndex={setCurrentSongIndex}
-                nextSongIndex={nextSongIndex}
-                songs={songs}
-            />
+        <div className='audio'>
+            <div className='audio-container'>
+                <div id='audio-player'>
+                    <ul className='audio-player-list'>
+                        {songs.map(song => (
+                            <li key={song.title}>
+                                <Player songs={song} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }

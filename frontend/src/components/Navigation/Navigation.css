@@ -1,3 +1,82 @@
-.nav-bar {
-    background-color: rgb(129, 129, 165);
+
+
+.nav-bar--container {
+    
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    display: flex;
+    z-index: 4;
+    background-color: rgba(129, 129, 165, 0.268);
+    z-index: 3;
+    height: 4em;
+    width: 100vw;
 }
+
+.no-user-wrapper {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.home-btn {
+    margin-left: 1.5rem;
+    color: rgb(136, 13, 38);
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.home-btn:hover {
+    text-shadow: 1px 1px 10px rgb(232, 10, 54), 1px 1px 10px rgb(232, 10, 54);
+    color: rgb(232, 10, 54);
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+
+
+.demo-login-btn {
+    padding: 8px;
+    background-color: rgb(56, 41, 2);
+}
+
+.demo-login-btn:hover {
+    background-color: rgb(255, 199, 58);
+    box-shadow: 2px 2px 10px rgba(255, 199, 58, 0.802), 2px 2px 15px rgba(255, 199, 58, 0.802);
+}
+
+.login-modal-btn {
+    padding: 8px;
+    background-color: rgb(56, 41, 2);
+}
+
+.login-modal-btn:hover {
+    background-color: rgb(255, 199, 58);
+    box-shadow: 2px 2px 10px rgba(255, 199, 58, 0.802), 2px 2px 15px rgba(255, 199, 58, 0.802);
+}
+
+.signup-modal-btn {
+    padding: 8px;
+    background-color: rgb(56, 41, 2);
+}
+
+.signup-modal-btn:hover {
+    background-color: rgb(255, 199, 58);
+    box-shadow: 2px 2px 10px rgba(255, 199, 58, 0.802), 2px 2px 15px rgba(255, 199, 58, 0.802);
+}
+
+.profile-button-container {
+    margin-left: 20px;
+}
+
+.profile-btn {
+        
+        border-radius: 50%;
+        padding: 8px;
+        background-color: rgb(6, 43, 3);
+}
+
+.profile-btn:hover {
+    background-color: rgb(29, 221, 15);
+    box-shadow: 2px 2px 10px rgba(29, 221, 15, 0.624), 2px 2px 15px rgba(29, 221, 15, 0.624);
+}
+

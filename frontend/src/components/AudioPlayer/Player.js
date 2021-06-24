@@ -11,7 +11,7 @@ function Player(props) {
     const [currentTime, setCurrentTime] = useState(0);
     
     const audioRef = useRef();
-    
+    // console.log(props.songs.src)
 
     const onChange = (e) => {
         const audio = audioRef.current;
@@ -19,27 +19,27 @@ function Player(props) {
         setPercentage(e.target.value);
     }
     
-    const SkipSong = useCallback((forwards = true) => {
-        if(forwards) {
-            props.setCurrentSongIndex(() => {
-                let temp = props.currentSongIndex;
-                temp++;
+    // const SkipSong = useCallback((forwards = true) => {
+    //     if(forwards) {
+    //         props.setCurrentSongIndex(() => {
+    //             let temp = props.currentSongIndex;
+    //             temp++;
 
-                if(temp > props.songs.length - 1) {
-                    temp = 0;
-                }
-                return temp;
-            });
-        } else {
-            let temp = props.currentSongIndex;
-            temp--;
+    //             if(temp > props.songs.length - 1) {
+    //                 temp = 0;
+    //             }
+    //             return temp;
+    //         });
+    //     } else {
+    //         let temp = props.currentSongIndex;
+    //         temp--;
 
-            if(temp < 0) {
-                temp = props.songs.length - 1;
-            }
-            return temp;
-        }
-    }, [props]);
+    //         if(temp < 0) {
+    //             temp = props.songs.length - 1;
+    //         }
+    //         return temp;
+    //     }
+    // }, [props]);
 
     
     useEffect(() => {
@@ -49,7 +49,7 @@ function Player(props) {
         } else {
             audioRef.current.pause();     
         }
-    }, [isPlaying, SkipSong]);
+    }, [isPlaying]);
 
 
     
@@ -64,20 +64,20 @@ function Player(props) {
     return (
         <div className='c-player'>
             <audio 
-                src={props.songs[props.currentSongIndex].src} 
+                src={props.songs.src} 
                 ref={audioRef}
                 onLoadedData={e => {
                     setDuration(e.currentTarget.duration.toFixed(2))
                 }}
                 onTimeUpdate={getCurrentDuration}
             ></audio>
-            <PlayerDetails song={props.songs[props.currentSongIndex]} />
+            <PlayerDetails song={props.songs} />
             <ProgressBar  onChange={onChange} percentage={percentage} />
             <PlayerControls 
-                song={props.songs[props.currentSongIndex]}
+                song={props.songs}
                 isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}
-                SkipSong={SkipSong}
+                // SkipSong={SkipSong}
                 duration={duration}
                 currentTime={currentTime}
             />

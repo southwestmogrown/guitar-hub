@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
@@ -34,7 +35,7 @@ function DemoLogin(user) {
         return (
             <div>
                 <form onSubmit={handleSubmit} className='demo-login'>
-                    <button type='submit' className='demo-login-btn'>Demo</button>
+                    <button type='submit' className='demo-login-btn'>Try It Out</button>
                 </form>
             </div>
         )

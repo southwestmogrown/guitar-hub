@@ -2,10 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import DemoLogin from '../DemoLogin';
 import './Navigation.css';
+import SignupFormModal from '../SignUpFormModal'
 
 
 function Navigation({ isLoaded }) {
@@ -20,14 +22,14 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <div className='nav-bar'>
                 <div className='no-user-wrapper'>
-                    <div className='demo-wrapper'>
+                    <div className='demo-container'>
                         <DemoLogin user={sessionUser}/>
                     </div>
                     <div className='login-container'>
                         <LoginFormModal />
                     </div>
                     <div className='signup-container'>
-                        <NavLink className='link' to='/signup'>Sign Up</NavLink>
+                        <SignupFormModal />
                     </div>
                 </div>
             </div>
@@ -35,16 +37,14 @@ function Navigation({ isLoaded }) {
     }
     return(
         <div className='nav-bar'>
-            <div className='home-icon'>
+            <div className='nav-bar--container'>
                 <NavLink exact to='/'>
-                    <div className='home'>
-                        <button className='home-btn'>
-                            <i className="fas fa-guitar"></i>
-                        </button>
-                    </div>
+                        <div className='home-btn'>
+                            new DAWn
+                        </div>
                 </NavLink>
-            </div>
                 {isLoaded && sessionLinks}
+            </div>
         </div>
     )
 };

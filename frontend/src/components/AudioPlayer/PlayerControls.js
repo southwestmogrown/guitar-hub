@@ -8,7 +8,7 @@ function PlayerControls(props) {
     useEffect(() => {
         if (props.currentTime === props.duration) {
             props.setIsPlaying(false)    
-            props.SkipSong(true)
+            // props.SkipSong(true)
             props.setIsPlaying(true)
         };
 
@@ -17,15 +17,15 @@ function PlayerControls(props) {
 
     return (
         <div className='c-player--controls'> 
-            <button className='skip-btn' onClick={() => props.SkipSong(false)}>
+            {/* <button className='skip-btn' onClick={() => props.SkipSong(false)}>
                 <FontAwesomeIcon icon={faBackward} />
-            </button>
+            </button> */}
             <button className='play-btn' onClick={() => props.setIsPlaying(!props.isPlaying)}>
                 <FontAwesomeIcon icon={props.isPlaying ? faPause : faPlay} />
             </button> 
-            <button className='skip-btn' onClick={() => props.SkipSong(true)}>
+            {/* <button className='skip-btn' onClick={() => props.SkipSong(true)}>
                 <FontAwesomeIcon icon={faForward} />
-            </button>
+            </button> */}
         </div>
     )
 }

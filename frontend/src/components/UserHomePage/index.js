@@ -1,18 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { getState } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import * as userActions from '../../store/users';
+import * as trackActions from '../../store/tracks'
+import { Redirect } from 'react-router';
 
 
 // import AudioPlayer from '../AudioPlayer';
 import './UserHomePage.css';
 import bill from '../../media/Bill-Murray-Golf.jpg'
-import TrackPlayer from '../TrackPlayer';
 import AudioPlayer from '../AudioPlayer';
  
-function UserHomePage(tracks) {
-    const sessionUser = useSelector(state => state.session.user);
+function UserHomePage() {
     
+    const dispatch = useDispatch()
+    const sessionUser = useSelector(state => state.session.user);
+    const tracks = useSelector(state => state.tracks.tracks)
+    // console.log(tracks)
+    useEffect(() => {
+        dispatch(userActions.getUsers())
+        dispatch(trackActions.getTracks())
+    }, [dispatch]);
+
+
 
     if(!sessionUser) {
         return <Redirect to='/' />
@@ -23,11 +32,8 @@ function UserHomePage(tracks) {
                     <div className='profile-img'>
                         <img className='profile' src={bill} alt={sessionUser.username}></img>
                     </div>
-                    {/* <div className='track-player--container'>
-                        <TrackPlayer tracks={tracks} user={sessionUser}/>
-                    </div> */}
                     <div>
-                        <AudioPlayer />
+                        <AudioPlayer tracks={tracks} user={sessionUser}/>
                     </div>
                 </div>
             </div>

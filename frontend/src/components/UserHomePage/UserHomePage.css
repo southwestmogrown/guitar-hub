@@ -21,3 +21,13 @@
     background-image: url('/home/shane/solo/authenticate-me/frontend/src/media/sound-studo-393042_1920.jpg');
     position: relative;
 }
+
+.audio-container {
+    display: flex;
+    justify-content: center;
+}
+
+.audio-player-list {
+    list-style-type: none;
+}
+
