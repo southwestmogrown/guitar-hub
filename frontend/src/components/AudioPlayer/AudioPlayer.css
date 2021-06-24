@@ -97,4 +97,20 @@
     user-select: none;
 }
 
+.play-btn--container {
+    padding-top: 8px;
+}
 
+.play-btn {
+    margin: 5px 15px 5px 5px;
+    padding: 4px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgba(5, 72, 18, 0.994);
+    font-size: xx-large;
+}
+
+.play-btn:hover {
+    color: rgb(55, 230, 12);
+    box-shadow: 1px 1px 20px 5px rgba(49, 214, 8, 0.644), inset 1px 1px 15px 1px rgba(49, 214, 8, 0.644);
+}

@@ -15,9 +15,9 @@ function PlayerControls(props) {
     }, [props])
 
     return (
-        <div className='c-player--controls'>
-            <button className='play-btn' onClick={() => props.setIsPlaying(!props.isPlaying)}>
-                <FontAwesomeIcon icon={props.isPlaying ? faPlay : faPause } />
+        <div className='play-btn--container'>
+            <button className='play' onClick={() => props.setIsPlaying(!props.isPlaying)}>
+                <FontAwesomeIcon className='play-btn' icon={props.isPlaying ? faPlay : faPause } />
             </button>
         </div>
     )
