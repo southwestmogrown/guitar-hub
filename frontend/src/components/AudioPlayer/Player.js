@@ -60,4 +60,4 @@ function Player(props) {
     )
 }
 
-export default Player
+export default Player;

@@ -7,6 +7,7 @@ const REMOVE_USER = 'session/removeUser';
 
 
 
+
 const setUser = (user) => {
   return {
     type: SET_USER,
@@ -14,6 +15,33 @@ const setUser = (user) => {
   };
 };
 
+
+export const create = user => async dispatch => {
+  const { images, image, username, email, password } = user;
+  const formData = new FormData();
+  formData.append('username', username);
+  formData.append('email', email);
+  formData.append('password', password);
+
+  if (images && images.length !== 0) {
+    for (var i = 0; i < images.length; i++) {
+      formData.append('images', images[i]);
+    }
+  }
+
+  if (image) formData.append('image', image);
+
+  const res = await csrfFetch('/api/users/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    },
+    body: formData
+  });
+
+  const data = await res.json();
+  dispatch(setUser(data.user));
+}
 
 
 const removeUser = () => {
@@ -47,13 +75,14 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { username, email, password } = user;
+  const { username, email, password, photoUrl } = user;
   const res = await csrfFetch('/api/users', {
     method: 'POST',
     body: JSON.stringify({
       username,
       email,
-      password
+      password,
+      photoUrl
     }),
   });
   const data = await res.json();

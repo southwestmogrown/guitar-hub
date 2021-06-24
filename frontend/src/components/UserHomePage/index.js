@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import * as userActions from '../../store/users';
-import * as trackActions from '../../store/tracks'
+import * as trackActions from '../../store/tracks';
+import * as commentActions from '../../store/comments';
 import { useHistory } from 'react-router';
 
 
@@ -15,10 +16,12 @@ function UserHomePage() {
     const sessionUser = useSelector(state => state.session.user);
     const tracks = useSelector(state => state.tracks.tracks);
 
+    // console.log(sessionUser)
     
     useEffect(() => {
-        dispatch(userActions.getUsers())
-        dispatch(trackActions.getTracks())
+        dispatch(userActions.getUsers());
+        dispatch(trackActions.getTracks());
+        dispatch(commentActions.getComments());
     }, [dispatch]);
 
 

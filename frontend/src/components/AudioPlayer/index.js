@@ -5,6 +5,7 @@ import ForThePeople from '../../../src/media/for-the-people-of-the-desert.mp3';
 import OuterSpace from '../../../src/media/outer space 2.0.mp3'
 import TheSea from '../../../src/media/the-sea-wasnt-intended-for-you.mp3'
 import Player from './Player';
+import Comments from '../Comments';
 
 import './AudioPlayer.css'
 
@@ -12,8 +13,12 @@ function AudioPlayer() {
 
     const user = useSelector(state => state.session.user)
     const tracks = useSelector(state => state.tracks.tracks)
+    const comments = useSelector(state => state.comments.comments)
 
-    
+    // console.log(comments);
+    // console.log(tracks)
+
+    // console.log(tracks[0].url)
 
     const [songs, setSongs] = useState([
         {
@@ -38,6 +43,7 @@ function AudioPlayer() {
                         {songs.map(song => (
                             <li key={song.title}>
                                 <Player songs={song} />
+                                <Comments tracks={tracks} comments={comments} user={user}/>
                             </li>
                         ))}
                     </ul>

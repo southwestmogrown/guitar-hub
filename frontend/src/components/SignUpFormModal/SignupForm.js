@@ -14,6 +14,7 @@ function SignupFormPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [image, setImage] = useState(null);
     const [errors, setErrors] = useState([]);
 
     if(sessionUser) return <Redirect to='/' />
@@ -22,7 +23,14 @@ function SignupFormPage() {
         e.preventDefault();
         if(password === confirmPassword) {
             setErrors([]);
-            await dispatch(sessionActions.signup({ username, email, password }))
+            await dispatch(sessionActions.create({ username, email, password, image }))
+              .then(() => {
+                  setUsername('');
+                  setEmail('');
+                  setPassword('');
+                  setConfirmPassword('');
+                  setImage(null);
+              })
               .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
@@ -31,6 +39,11 @@ function SignupFormPage() {
             history.push('/')
         }
         return setErrors(['Confirm Password field must be the same as the Password field.'])
+      }
+
+      const updateFile = e => {
+          const file = e.target.files[0];
+          if(file) setImage(file)
       }
 
     return (
@@ -54,7 +67,7 @@ function SignupFormPage() {
                         <label htmlFor='email-input'>Email</label>
                         <input 
                             className='email-input'
-                            type='text'
+                            type='email'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -64,7 +77,7 @@ function SignupFormPage() {
                         <label htmlFor='password-input'>Password</label>
                         <input
                             className='password-input'
-                            type='text'
+                            type='password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -74,11 +87,15 @@ function SignupFormPage() {
                         <label htmlFor='confirm-password-input'>Confirm Password</label>
                         <input
                             className='confirm-password-input'
-                            type='text'
+                            type='password'
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                         />
+                    </div>
+                    <div className='file-container'>
+                        <input name='file' className='input-file' type='file' id='file' onChange={updateFile} />
+                        <label htmlFor='file'>Upload an Image</label>
                     </div>
                     <div className='signup-btn-container'>
                         <button className='signup-btn' type='submit'>Sign Up</button>
