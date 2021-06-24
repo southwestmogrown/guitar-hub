@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/southwestmogrown/guitar-hub/issues"
   },
-  "homepage": "https://github.com/southwestmogrown/guitar-hub#readme"
+  "homepage": "https://github.com/southwestmogrown/guitar-hub#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "react-audio-player": "^0.17.0"
+  }
 }
