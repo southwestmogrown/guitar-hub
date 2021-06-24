@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 function DemoLogin(user) {
     const dispatch = useDispatch();
-    const [credential, setCredential] = useState("Demo-lition");
+    const [credential, setCredential] = useState("Bill");
     const [password, setPassword] = useState('password');
     const history = useHistory()
    

@@ -16,7 +16,7 @@ function UserHomePage() {
     const sessionUser = useSelector(state => state.session.user);
     const tracks = useSelector(state => state.tracks.tracks);
 
-    // console.log(sessionUser)
+    console.log(sessionUser)
     
     useEffect(() => {
         dispatch(userActions.getUsers());
@@ -34,7 +34,7 @@ function UserHomePage() {
                 <div className='layer'>
                     <div className='profile-img'>
                         <div className='shadow-box'></div>
-                        <img className='profile' src={bill} alt={sessionUser.username}></img>
+                        <img src={sessionUser.photoUrl} className='profile'  alt={sessionUser.username}/>
                     </div>
                     <div className='profile-audio'>
                         <AudioPlayer tracks={tracks} user={sessionUser}/>

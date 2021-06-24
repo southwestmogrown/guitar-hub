@@ -13,7 +13,7 @@ export const getComments = () => async dispatch => {
     
     if(res.ok) {
         const list = await res.json();
-        console.log(list)
+        // console.log(list)
         dispatch(load(list));
     }
 };

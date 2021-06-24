@@ -15,42 +15,35 @@ function AudioPlayer() {
     const tracks = useSelector(state => state.tracks.tracks)
     const comments = useSelector(state => state.comments.comments)
 
-    // console.log(comments);
-    // console.log(tracks)
+    const songs = [];
 
-    // console.log(tracks[0].url)
-
-    const [songs, setSongs] = useState([
-        {
-            title: 'For the People of the Desert',
-            src: ForThePeople
-        },
-        {
-            title: 'Outer Space',
-            src: OuterSpace
-        },
-        {
-            title: 'The Sea Wasn\'t Intended For You',
-            src: TheSea
-        }
-    ]);
     
-    return (
-        <div className='audio'>
-            <div className='audio-container'>
-                <div id='audio-player'>
-                    <ul className='audio-player-list'>
-                        {songs.map(song => (
-                            <li key={song.title}>
-                                <Player songs={song} />
-                                <Comments tracks={tracks} comments={comments} user={user}/>
-                            </li>
-                        ))}
-                    </ul>
+    if (tracks !== undefined) {
+        tracks.forEach(track => {
+            if(track.userId === user.id) {
+                songs.push(track)
+            }
+        });
+        return (
+            <div className='audio'>
+                <div className='audio-container'>
+                    <div id='audio-player'>
+                        <ul className='audio-player-list'>
+                            {songs.map(song => (
+                                <li key={song.title}>
+                                    <Player songs={song} />
+                                    <Comments tracks={tracks} comments={comments} user={user}/>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return null;
+    }
+    
 }
 
 export default AudioPlayer;

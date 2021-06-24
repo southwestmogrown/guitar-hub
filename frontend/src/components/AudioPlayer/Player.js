@@ -11,7 +11,7 @@ function Player(props) {
     const [currentTime, setCurrentTime] = useState(0);
     
     const audioRef = useRef();
-    
+    console.log(props.songs.url)
 
     const onChange = (e) => {
         const audio = audioRef.current;
@@ -38,7 +38,7 @@ function Player(props) {
     return (
         <div className='c-player'>
             <audio 
-                src={props.songs.src} 
+                src={props.songs.url} 
                 ref={audioRef}
                 onLoadedData={e => {
                     setDuration(e.currentTarget.duration.toFixed(2))
