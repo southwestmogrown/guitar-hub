@@ -11,7 +11,7 @@ function Player(props) {
     const [currentTime, setCurrentTime] = useState(0);
     
     const audioRef = useRef();
-    // console.log(props.songs.src)
+    
 
     const onChange = (e) => {
         const audio = audioRef.current;
@@ -41,17 +41,29 @@ function Player(props) {
     //     }
     // }, [props]);
 
-    
-    // useEffect(() => {
+   
+    useEffect(() => {
         
-    //     if(isPlaying) {
-    //         audioRef.current.play();
-    //     } else {
-    //         audioRef.current.pause();     
-    //     }
+        if(!isPlaying) {
+            audioRef.current.play();
+        } else {
+            audioRef.current.pause();     
+        }
+    }, [isPlaying]);
+
+    // const toggle = setIsPlaying(!isPlaying)
+
+    // useEffect(() => {
+    //     isPlaying ? audioRef.current.play() : audioRef.current.pause();
     // }, [isPlaying]);
 
-    const toggle = setPlaying(!playing)
+    // useEffect(() => {
+    //     audioRef.addEventListener('ended', () => setIsPlaying(false));
+    //     return () => {
+    //         audioRef.addEventListener('ended', () => setIsPlaying(false));
+
+    //     }
+    // }, [])
 
 
     
@@ -75,7 +87,8 @@ function Player(props) {
             ></audio>
             <PlayerDetails song={props.songs} />
             <ProgressBar  onChange={onChange} percentage={percentage} />
-            <PlayerControls 
+            <PlayerControls
+                
                 song={props.songs}
                 isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}
