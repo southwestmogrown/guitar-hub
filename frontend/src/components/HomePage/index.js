@@ -9,11 +9,13 @@ function HomePage() {
     const user = useSelector(state => state.session.user);
     const history = useHistory();
 
-        if(user) {
+        if(!user) {
+            history.push(`/`)
+        } else {
             history.push(`/users/${user.id}`)
+
         }
 
-        history.push('/')
         return (
             <>
                 <div className='home-page'>

@@ -27,7 +27,8 @@ function SignupFormPage() {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
-        history.push('/')
+            
+            history.push('/')
         }
         return setErrors(['Confirm Password field must be the same as the Password field.'])
       }
@@ -63,7 +64,7 @@ function SignupFormPage() {
                         <label htmlFor='password-input'>Password</label>
                         <input
                             className='password-input'
-                            type='password'
+                            type='text'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -73,7 +74,7 @@ function SignupFormPage() {
                         <label htmlFor='confirm-password-input'>Confirm Password</label>
                         <input
                             className='confirm-password-input'
-                            type='password'
+                            type='text'
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
