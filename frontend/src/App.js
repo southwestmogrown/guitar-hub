@@ -25,6 +25,9 @@ function App() {
           <Navigation isLoaded={isLoaded} />
           {isLoaded && (
             <Switch>
+              <Route exact path='/' >
+                  <HomePage />
+                </Route>
               <Route path='/signup'>
                 <SignUpFormModal />
               </Route>
@@ -47,9 +50,11 @@ function App() {
               <Route path='/signup'>
                 <SignUpFormModal />
               </Route>
+                <Route path='/' >
+                  <HomePage />
+                </Route>
             </Switch>
           )}
-          <HomePage />
         </div>
       </>
     );

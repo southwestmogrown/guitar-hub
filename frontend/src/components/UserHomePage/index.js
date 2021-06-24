@@ -13,7 +13,9 @@ function UserHomePage() {
     
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
-    const tracks = useSelector(state => state.tracks.tracks)
+    const tracks = useSelector(state => state.tracks.tracks);
+
+    
     useEffect(() => {
         dispatch(userActions.getUsers())
         dispatch(trackActions.getTracks())
