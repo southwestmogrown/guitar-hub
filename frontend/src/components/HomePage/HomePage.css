@@ -1,6 +1,6 @@
 .home-page {
     height: 100vh;
-    background-image: url('/home/shane/solo/authenticate-me/frontend/src/media/sound-studo-393042_1920.jpg');
+    background-image: url('../../media/sound-studo-393042_1920.jpg');
     position: relative;
 }
 
