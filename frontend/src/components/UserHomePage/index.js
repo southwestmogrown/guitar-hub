@@ -7,7 +7,6 @@ import { useHistory } from 'react-router';
 
 
 import './UserHomePage.css';
-import bill from '../../media/Bill-Murray-Golf.jpg'
 import AudioPlayer from '../AudioPlayer';
  
 function UserHomePage() {
@@ -16,8 +15,6 @@ function UserHomePage() {
     const sessionUser = useSelector(state => state.session.user);
     const tracks = useSelector(state => state.tracks.tracks);
 
-    console.log(sessionUser)
-    
     useEffect(() => {
         dispatch(userActions.getUsers());
         dispatch(trackActions.getTracks());

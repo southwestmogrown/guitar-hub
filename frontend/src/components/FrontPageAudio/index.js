@@ -1,12 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Player from './Player';
+import Player from '../AudioPlayer';
 import Comments from '../Comments';
 
-import './AudioPlayer.css'
 
-function AudioPlayer() {
+function FPAudioPlayer() {
 
     const user = useSelector(state => state.session.user)
     const tracks = useSelector(state => state.tracks.tracks)
@@ -17,10 +16,9 @@ function AudioPlayer() {
     
     if (tracks !== undefined) {
         tracks.forEach(track => {
-            if(track.userId === user.id) {
-                songs.push(track)
-            }
-        });
+            songs.push(track)
+        })
+        
         return (
             <div className='audio'>
                 <div className='audio-container'>
@@ -29,7 +27,7 @@ function AudioPlayer() {
                             {songs.map(song => (
                                 <li key={song.title}>
                                     <Player songs={song} />
-                                    <Comments tracks={tracks} comments={comments} user={user}/>
+                                    <Comments tracks={songs} comments={comments} user={user}/>
                                 </li>
                             ))}
                         </ul>
@@ -43,4 +41,4 @@ function AudioPlayer() {
     
 }
 
-export default AudioPlayer;
+export default FPAudioPlayer;

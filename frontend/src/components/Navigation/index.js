@@ -8,6 +8,7 @@ import LoginFormModal from '../LoginFormModal';
 import DemoLogin from '../DemoLogin';
 import './Navigation.css';
 import SignupFormModal from '../SignUpFormModal'
+import UserPagesButton from '../UserPages';
 
 
 function Navigation({ isLoaded }) {
@@ -16,7 +17,9 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <div className='active-session-links'>
+                <ProfileButton user={sessionUser} />            
+            </div>
         );
     } else {
         sessionLinks = (

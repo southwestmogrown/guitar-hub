@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import './index.css'
 import UserHomePage from "./components/UserHomePage";
 import SignUpFormModal from './components/SignUpFormModal'
+import UserPages from "./components/UserPages";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
               </Route>
               <Route path={`/users/${user.id}`}>
                 <UserHomePage />   
+              </Route>
+              <Route path='/users'>
+                <UserPages />
               </Route>
             </Switch>
           )}

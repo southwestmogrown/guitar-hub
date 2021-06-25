@@ -109,3 +109,16 @@
     box-shadow: 2px 2px 10px rgba(29, 221, 15, 0.624), 2px 2px 15px rgba(29, 221, 15, 0.624);
 }
 
+.user-pages-btn {
+    padding: 8px;
+    background-color: rgb(56, 41, 2);
+}
+
+.user-pages-btn:hover {
+    background-color: rgb(255, 199, 58);
+    box-shadow: 2px 2px 10px rgba(255, 199, 58, 0.802), 2px 2px 15px rgba(255, 199, 58, 0.802);
+}
+
+.browse {
+    margin-right: 200px;
+}
