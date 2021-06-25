@@ -31,7 +31,7 @@ module.exports = {
       email: faker.internet.email(),
       username: 'Harry',
       hashedPassword: bcrypt.hashSync('password'),
-      photoUrl: 'https://newdawn.s3.us-east-2.amazonaws.com/5a8c83d342e1cc57810ba9ee-750-563.jpg'
+      photoUrl: 'https://newdawn.s3.us-east-2.amazonaws.com/1xukyr.jpg'
 
     },
 
@@ -45,4 +45,3 @@ module.exports = {
     }, {});
   }
 }
-

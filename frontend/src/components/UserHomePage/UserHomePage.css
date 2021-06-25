@@ -48,8 +48,10 @@
 .profile-img {
     position: relative;
     margin-top: 60px;
-    height: 235px;
-    width: 250px;
+    max-height: 200px;
+    max-width: 200px;
+    min-height: 200px;
+    min-width: 200px;
 }
 
 .shadow-box {
