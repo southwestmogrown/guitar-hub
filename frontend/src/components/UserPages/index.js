@@ -1,24 +1,36 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-import * as userActions from '../../store/users'
+import { NavLink, useParams } from 'react-router-dom';
+import * as userActions from '../../store/users';
+import UserPage from './UserPage';
+
+
+import './UserPages.css';
 
 function UserPages() {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const sessionUser = useSelector(state => state.session.user)
-    const users = useSelector(state => state.session.users);
 
+
+    const users = useSelector(state => state.users.users);
     useEffect(() => {
         dispatch(userActions.getUsers());
     }, [dispatch])
     
-    console.log(users)
     if(users !== undefined) {
         return (
-            <div>
-                <h1>Howdy</h1>
-            </div>
+            <>
+                <div className='users-container'>
+                    <div className='users-list'>
+                        <ul>
+                            {users.map(user => (
+                                <NavLink to={`/users/${user.id}`}>
+                                    <li key={user.id}>{user.username}</li>
+                                </NavLink>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </>
         )
 
     } else {

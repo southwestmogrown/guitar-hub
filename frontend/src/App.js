@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 import Navigation from './components/Navigation';
@@ -10,11 +10,13 @@ import './index.css'
 import UserHomePage from "./components/UserHomePage";
 import SignUpFormModal from './components/SignUpFormModal'
 import UserPages from "./components/UserPages";
+import UserPage from "./components/UserPages/UserPage";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch])
@@ -32,11 +34,14 @@ function App() {
               <Route path='/signup'>
                 <SignUpFormModal />
               </Route>
-              <Route path={`/users/${user.id}`}>
+              {/* <Route path={`/users/${user.id}`}>
                 <UserHomePage />   
-              </Route>
-              <Route path='/users'>
+              </Route> */}
+              <Route exact path='/users'>
                 <UserPages />
+              </Route>
+              <Route path='/users/:id'>
+                <UserPage />
               </Route>
             </Switch>
           )}

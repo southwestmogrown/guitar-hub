@@ -34,10 +34,11 @@ router.get('/', asyncHandler(async(req, res) => {
     return res.json({users})
 }));
 
-router.get('/:id'), requireAuth, asyncHandler(async(req, res) => {
-    const user = await User.findByPk(1);
+router.get('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
+    const user = await User.findByPk(req.params.id);
+    console.log(user)
     return res.json({user})
-})
+}))
 
 router.post(
     '/',

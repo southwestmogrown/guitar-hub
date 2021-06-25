@@ -8,12 +8,10 @@ import LoginFormModal from '../LoginFormModal';
 import DemoLogin from '../DemoLogin';
 import './Navigation.css';
 import SignupFormModal from '../SignUpFormModal'
-import UserPagesButton from '../UserPages';
 
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
-
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (

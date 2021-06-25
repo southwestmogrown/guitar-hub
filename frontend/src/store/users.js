@@ -24,6 +24,7 @@ export const getUsers = () => async dispatch => {
 }
 
 export const getOneUser = (id) => async dispatch => {
+    
     const res = await csrfFetch(`/api/users/${id}`);
 
     if(res.ok) {

@@ -8,14 +8,14 @@ import './AudioPlayer.css'
 
 function AudioPlayer() {
 
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.users.user)
     const tracks = useSelector(state => state.tracks.tracks)
     const comments = useSelector(state => state.comments.comments)
 
     const songs = [];
 
     
-    if (tracks !== undefined) {
+    if (tracks !== undefined && user !== undefined) {
         tracks.forEach(track => {
             if(track.userId === user.id) {
                 songs.push(track)
