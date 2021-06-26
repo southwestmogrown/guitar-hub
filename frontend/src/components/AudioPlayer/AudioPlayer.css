@@ -67,7 +67,7 @@
     border-radius: 10px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
+    z-index: 0;
     user-select: none;
     pointer-events: none;
 }
@@ -86,7 +86,7 @@
     width: var(--thumb-width);
     height: var(--thumb-height);
     box-shadow: 0px 0px 5px rgba(0,0,0,0.753);
-    z-index: 3;
+    z-index: 0;
     background: rgb(255, 255, 255);
     position: absolute;
     border-radius: 50%;
@@ -103,11 +103,11 @@
 
 .play-btn {
     margin: 5px 15px 5px 5px;
-    padding: 4px;
+    padding: 2px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0);
     color: rgba(5, 72, 18, 0.994);
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 .play-btn:hover {

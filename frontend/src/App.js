@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, useParams } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 import Navigation from './components/Navigation';
@@ -7,7 +7,6 @@ import * as sessionActions from './store/session';
 
 import HomePage from "./components/HomePage";
 import './index.css'
-import UserHomePage from "./components/UserHomePage";
 import SignUpFormModal from './components/SignUpFormModal'
 import UserPages from "./components/UserPages";
 import UserPage from "./components/UserPages/UserPage";

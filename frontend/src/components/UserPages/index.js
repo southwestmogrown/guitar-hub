@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as userActions from '../../store/users';
-import UserPage from './UserPage';
 
 
 import './UserPages.css';

@@ -5,8 +5,7 @@ import * as trackActions from '../../store/tracks';
 import * as commentActions from '../../store/comments';
 import { useHistory } from 'react-router';
 
-import '../UserHomePage/UserHomePage.css'
-// import './UserHomePage.css';
+
 import AudioPlayer from '../AudioPlayer';
 import { useParams } from 'react-router';
 
@@ -17,9 +16,7 @@ function UserPage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const user = useSelector(state => state.users.user);
-    const tracks = useSelector(state => state.tracks.tracks);
 
-    console.log(params)
 
     useEffect(() => {
         dispatch(userActions.getUsers());

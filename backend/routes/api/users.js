@@ -36,7 +36,6 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.get('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
     const user = await User.findByPk(req.params.id);
-    console.log(user)
     return res.json({user})
 }))
 
