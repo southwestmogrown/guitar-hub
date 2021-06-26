@@ -21,6 +21,23 @@ router.post('/', restoreUser, asyncHandler(async(req, res) => {
        body
    });
    return res.json({comment})
+}));
+
+router.delete('/:id', asyncHandler(async(req, res) => {
+    const {id} = req.params;
+    const comment = await Comment.destroy({
+        where: {id}
+    })
+    return res.json({comment});
+}));
+
+router.patch('/:id', asyncHandler(async(req, res) => {
+    const {id} = req.params;
+    
+    const comment = await Comment.update(req.body, {
+        where: {id}
+    })
+    return res.json({comment});
 }))
 
 module.exports = router;

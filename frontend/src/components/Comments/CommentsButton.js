@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import AddComment from './AddComment';
 
 function CommentsButton(props) {
+    const songUser = props.song
     const trackId = props.song.id
     const [showModal, setShowModal] = useState(false);
 
@@ -11,7 +12,7 @@ function CommentsButton(props) {
             <button className='login-modal-btn' onClick={() => setShowModal(true)}>Comment</button>
             {showModal && (
                 <Modal className='comment-modal' onClose={() => setShowModal(false)}>
-                    <AddComment trackId={trackId} />
+                    <AddComment trackId={trackId} songUser={songUser}/>
                 </Modal>
             )}
         </>

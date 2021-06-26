@@ -3,35 +3,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as commentActions from '../../store/comments';
 
-function AddComment(props) {
-    const songUser = props.songUser
+function EditComment(props) {
+    const commentId = props.commentId
+    const trackId = props.track.id;
+    const songUser = props.track.userId;
     const history = useHistory();
-    const trackId = props.trackId
     const dispatch = useDispatch();
     const [body, setBody] = useState('');
     const [errors, setErrors] = useState([])
     const user = useSelector(state => state.session.user)
-    
+    console.log(props)
     const  handleSubmit = async (e) => {
         e.preventDefault();
         
-        console.log(e.target.value)
         const payload = {
             userId: user.id,
             trackId: trackId,
             songId: null,
             body
         }
-        await dispatch(commentActions.addComment(payload))
+        await dispatch(commentActions.updateComment(payload, commentId))
         .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);
         });
         setBody('');
         history.push('/')
-        history.push(`/users/${songUser.userId}`);
+        history.push(`/users/${songUser}`);
       }
-
 
     return (
         <>
@@ -50,11 +49,11 @@ function AddComment(props) {
 
                 </div>
                 <div className='comment-form--btn-container'>
-                    <button className='comment-form--btn' type='submit'>Add</button>
+                    <button className='comment-form--btn' type='submit'>Edit</button>
                 </div>
             </form>
         </>
     )
 }
 
-export default AddComment;
+export default EditComment;

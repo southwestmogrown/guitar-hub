@@ -29,7 +29,7 @@ function AudioPlayer() {
                             {songs.map(song => (
                                 <li key={song.title}>
                                     <Player songs={song} />
-                                    <Comments tracks={tracks} comments={comments} user={user}/>
+                                    <Comments track={song} comments={comments} user={user}/>
                                 </li>
                             ))}
                         </ul>

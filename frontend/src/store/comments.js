@@ -3,16 +3,30 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = 'comments/LOAD';
 const ADD = 'comments/ADD';
+const REMOVE = 'comments/REMOVE';
+const UDPDATE = 'comments/UDPDATE';
 
 const load = list => ({
     type: LOAD,
     list
 });
 
+const remove = comment => ({
+    type: REMOVE,
+    comment
+})
+
 const add = comment => ({
     type: ADD,
     comment
 });
+
+const update = comment => ({
+    type: UDPDATE,
+    comment
+})
+
+
 
 export const getComments = () => async dispatch => {
     const res = await csrfFetch('/api/comments');
@@ -22,6 +36,20 @@ export const getComments = () => async dispatch => {
         dispatch(load(list));
     }
 };
+
+export const updateComment = (data, commentId) => async dispatch => {
+    console.log(data)
+    const res = await csrfFetch(`/api/comments/${commentId}`, {
+        method: 'PATCH',
+        body: JSON.stringify(data)
+    });
+
+    if(res.ok) {
+        const comment = await res.json();
+        dispatch(update(comment))
+    }
+    
+}
 
 export const addComment = data => async dispatch => {
     const res = await csrfFetch('/api/comments', {
@@ -36,9 +64,17 @@ export const addComment = data => async dispatch => {
         const comment = await res.json();
         dispatch(add(comment))
     }
-    
-    
+}
 
+export const removeComment = commentId => async dispatch => {
+    const res = await csrfFetch(`/api/comments/${commentId}`, {
+        method: 'delete'
+    });
+
+    if(res.ok) {
+        const comment = await res.json()
+        dispatch(remove(comment));
+    }
 }
 
 const initialState = [];
@@ -52,6 +88,12 @@ const commentsReducer = (state = initialState, action) => {
             }
         }
         case ADD: {
+            return {
+                ...state,
+                ...action.comment
+            }
+        }
+        case REMOVE: {
             return {
                 ...state,
                 ...action.comment
