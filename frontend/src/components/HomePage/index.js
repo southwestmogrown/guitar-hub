@@ -22,7 +22,16 @@ function HomePage() {
                     <div className='layer'>
                         <div className='welcome-container'>
                             <div className='welcome'>
-                                <h2>Welcome to new DAWn!</h2>
+                                <h2>Welcome to new DAWn</h2>
+                                <div>
+                                    <p>This is a space for artists to share their ideas and collaborate</p>
+                                </div>
+                                <div>
+                                    <p>Please login or sign up to continue</p>
+                                </div>
+                                <div>
+                                    <p>Or click the 'Try It Out' button to check out some of our features</p>
+                                </div>
                             </div>
                         </div>
                     </div>

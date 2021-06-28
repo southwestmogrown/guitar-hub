@@ -33,9 +33,6 @@ function App() {
               <Route path='/signup'>
                 <SignUpFormModal />
               </Route>
-              {/* <Route path={`/users/${user.id}`}>
-                <UserHomePage />   
-              </Route> */}
               <Route exact path='/users'>
                 <UserPages />
               </Route>

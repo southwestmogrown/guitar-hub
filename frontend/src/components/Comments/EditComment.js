@@ -49,7 +49,7 @@ function EditComment(props) {
 
                 </div>
                 <div className='comment-form--btn-container'>
-                    <button className='comment-form--btn' type='submit'>Edit</button>
+                    <button className='edit-comment-btn' type='submit'>Edit</button>
                 </div>
             </form>
         </>

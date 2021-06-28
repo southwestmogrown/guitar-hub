@@ -32,6 +32,11 @@
     font-weight: bolder;
 }
 
+.nav-bar {
+    display: flex;
+
+}
+
 
 
 .demo-login-btn {
@@ -120,5 +125,5 @@
 }
 
 .browse {
-    margin-right: 200px;
+    margin-right: 20em;
 }

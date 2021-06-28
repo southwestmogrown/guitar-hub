@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Player from './Player';
 import Comments from '../Comments';
+import Loading from '../Loading';
 
 import './AudioPlayer.css'
 
@@ -27,7 +28,7 @@ function AudioPlayer() {
                     <div id='audio-player'>
                         <ul className='audio-player-list'>
                             {songs.map(song => (
-                                <li key={song.title}>
+                                <li className='tracks' key={song.title}>
                                     <Player songs={song} />
                                     <Comments track={song} comments={comments} user={user}/>
                                 </li>
@@ -38,7 +39,9 @@ function AudioPlayer() {
             </div>
         )
     } else {
-        return null;
+        return (
+            <Loading />
+        );
     }
     
 }

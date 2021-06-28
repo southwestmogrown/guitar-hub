@@ -45,13 +45,11 @@ function Player(props) {
                 onTimeUpdate={getCurrentDuration}
             ></audio>
             <PlayerDetails song={props.songs} />
-            <ProgressBar  onChange={onChange} percentage={percentage} />
+            <ProgressBar className='progress-bar' onChange={onChange} percentage={percentage} />
             <PlayerControls
-                
                 song={props.songs}
                 isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}
-                // SkipSong={SkipSong}
                 duration={duration}
                 currentTime={currentTime}
             />

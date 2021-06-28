@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Player from '../AudioPlayer';
 import Comments from '../Comments';
+import Loading from '../Loading';
 
 
 function FPAudioPlayer() {
@@ -36,7 +37,9 @@ function FPAudioPlayer() {
             </div>
         )
     } else {
-        return null;
+        return (
+            <Loading />
+        );
     }
     
 }

@@ -8,6 +8,7 @@ import { useHistory } from 'react-router';
 
 import AudioPlayer from '../AudioPlayer';
 import { useParams } from 'react-router';
+import Loading from '../Loading';
 
 function UserPage() {
     const params = useParams() 
@@ -47,7 +48,9 @@ function UserPage() {
     
             )       
         } else {
-            return null;
+            return (
+                <Loading />
+            );
         }
     }
 }

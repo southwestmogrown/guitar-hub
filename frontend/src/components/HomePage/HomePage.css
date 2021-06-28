@@ -1,6 +1,11 @@
 .home-page {
     height: 100vh;
-    background-image: url('../../media/sound-studo-393042_1920.jpg');
+    width: 100vw;
+    background: url('../../media/sound-studo-393042_1920.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     position: relative;
 }
 
@@ -20,17 +25,21 @@
     
 }
 
-.welcome {
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
-    width: 300px;
-    height: auto;
-    background-color: darkgray;
-}
+
 
 .welcome h2 {
+    font-size: xx-large;
+    color: rgb(214, 214, 214);
     font-weight: bold;
     padding-top: 5px;
-    text-shadow: 1px 1px 3px rgb(87, 87, 87);
+    text-shadow: 1px 1px 3px rgb(33, 33, 33);
+}
+
+.welcome p {
+    padding-top: 40px;
+    font-size: xx-large;
+    color: rgb(214, 214, 214);
+    font-weight: bold;
+    
+    text-shadow: 1px 1px 3px rgb(33, 33, 33);
 }

@@ -12,14 +12,33 @@
     
 }
 
+.controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+} 
+
+.c-player--details {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .c-player {
+    text-shadow: 1px 1px 2px black;
     font-size: smaller;
-    color: blanchedalmond;
+    color: rgb(214, 205, 190);
     margin-right: 5px;
     min-width: 400px;
     background-color: #313131;
     padding: 10px 20px;
     border-radius: 10px;
+    box-shadow: inset -3px -3px 8px 2px rgba(0, 0, 0, 0.494), inset 3px 3px 8px 2px rgb(128, 128, 128);
+}
+
+.progress-bar {
+    padding: 5px 15px;
+    border-radius: 50px;
+    box-shadow: inset -2px -2px 5px 2px rgba(0, 0, 0, 0.494), inset 2px 2px 5px 2px rgb(128, 128, 128);
 }
 
 .progress-bar--container {
@@ -30,7 +49,7 @@
 
 .progress-bar--container {
     position: relative;
-    width: 100%
+    width: 100%;
 }
 
 .range {
@@ -45,7 +64,7 @@
 
 .progress-bar--container::before {
     content: '';
-    background-color: white;
+    background-color: rgb(2, 112, 5);
     width: 99%;
     height: 4px;
     display: block;
@@ -59,7 +78,7 @@
 }
 
 .progress-bar--cover {
-    background-color: rgb(218, 55, 145);
+    background-color: rgb(218, 55, 55);
     width: 100%;
     height: var(--progress-bar-height);
     display: block;
@@ -85,9 +104,9 @@
 .thumb {
     width: var(--thumb-width);
     height: var(--thumb-height);
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.753);
+    box-shadow: inset -2px -2px 5px 2px rgba(0, 0, 0, 0.494), inset 2px 2px 5px 2px rgb(128, 128, 128);
     z-index: 0;
-    background: rgb(255, 255, 255);
+    background: rgb(181, 181, 181);
     position: absolute;
     border-radius: 50%;
     top: 50%;
@@ -97,9 +116,7 @@
     user-select: none;
 }
 
-.play-btn--container {
-    padding-top: 8px;
-}
+
 
 .play-btn {
     margin: 5px 15px 5px 5px;
@@ -109,6 +126,8 @@
     color: rgba(5, 72, 18, 0.994);
     font-size: x-large;
 }
+
+
 
 .play-btn:hover {
     color: rgb(55, 230, 12);

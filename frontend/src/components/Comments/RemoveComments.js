@@ -25,7 +25,7 @@ function RemoveComments(props) {
     return (
         <div>
             <form onSubmit={handleSubmit} className='remove-comment'>
-                <button type='submit'>Delete</button>
+                <button className='remove-comment-btn' type='submit'>Delete</button>
             </form>
         </div>
     )

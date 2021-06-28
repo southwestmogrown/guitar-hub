@@ -18,15 +18,17 @@ function ProgressBar({onChange, percentage}) {
         setProgressBarWidth(centerProgressBar);
     }, [percentage])
     return (
-        <div className='progress-bar--container'>
-            <div className='progress-bar--cover' style={{
-                width: `${progressBarWidth}px`
-            }}></div>
-            <div className='thumb' ref={thumbRef} style={{
-                left: `${position}%`,
-                marginLeft: `${marginLeft}px`
-            }}></div>
-            <input type='range' value={position} ref={rangeRef}  step='0.01' className='range' onChange={onChange} percentage={percentage}  />
+        <div className='progress-bar'>
+            <div className='progress-bar--container'>
+                <div className='progress-bar--cover' style={{
+                    width: `${progressBarWidth}px`
+                }}></div>
+                <div className='thumb' ref={thumbRef} style={{
+                    left: `${position}%`,
+                    marginLeft: `${marginLeft}px`
+                }}></div>
+                <input type='range' value={position} ref={rangeRef}  step='0.01' className='range' onChange={onChange} percentage={percentage}  />
+            </div>
         </div>
     )
 }

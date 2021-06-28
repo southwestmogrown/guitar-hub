@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as userActions from '../../store/users';
+import Loading from '../Loading';
 
 
 import './UserPages.css';
@@ -20,10 +21,13 @@ function UserPages() {
             <>
                 <div className='users-container'>
                     <div className='users-list'>
-                        <ul>
+                        <ul className='users'>
                             {users.map(user => (
                                 <NavLink to={`/users/${user.id}`}>
-                                    <li key={user.id}>{user.username}</li>
+                                    <li className='user-links' key={user.id}>
+                                        <img src={user.photoUrl} className='profile-small'  alt={user.username}/>
+                                        {user.username}
+                                    </li>
                                 </NavLink>
                             ))}
                         </ul>
@@ -33,7 +37,9 @@ function UserPages() {
         )
 
     } else {
-        return null;
+        return (
+            <Loading />
+        );
     }
 
 }
