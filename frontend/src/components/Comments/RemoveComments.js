@@ -18,7 +18,7 @@ function RemoveComments(props) {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);
         });
-        history.push('/')
+        history.push('/users')
         history.push(`/users/${params.id}`)
     }
 
