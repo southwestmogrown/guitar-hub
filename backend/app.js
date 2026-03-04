@@ -5,9 +5,11 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
+const asyncHandler = require('express-async-handler');
 
 const { environment } = require('./config');
 const routes = require('./routes');
+const { StemJob, Stem } = require('./db/models');
 
 const isProduction = environment === 'production';
 
@@ -23,6 +25,33 @@ if(!isProduction) {
 
 app.use(helmet({
     contentSecurityPolicy: false
+}));
+
+// Internal callback from Python service — must be BEFORE csurf
+app.post('/internal/stems/callback', express.json(), asyncHandler(async (req, res) => {
+    const ip = req.ip || req.connection.remoteAddress;
+    if (!ip.includes('127.0.0.1') && !ip.includes('::1')) {
+        return res.status(403).json({ error: 'Forbidden.' });
+    }
+    const { song_id, status, stems, error } = req.body;
+    const stemJob = await StemJob.findOne({
+        where: { songId: song_id },
+        order: [['createdAt', 'DESC']]
+    });
+    if (!stemJob) return res.status(404).json({ error: 'Job not found.' });
+
+    if (status === 'complete') {
+        await stemJob.update({ status: 'complete' });
+        await Stem.bulkCreate(stems.map(stemType => ({
+            songId: song_id,
+            stemJobId: stemJob.id,
+            stemType,
+            url: `/media/stems/${song_id}/${stemType}.mp3`
+        })));
+    } else {
+        await stemJob.update({ status: 'failed', error: error || 'Unknown error.' });
+    }
+    return res.json({ received: true });
 }));
 
 app.use(

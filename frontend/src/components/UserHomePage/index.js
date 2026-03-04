@@ -8,6 +8,7 @@ import { Redirect } from 'react-router';
 import './UserHomePage.css';
 import bill from '../../media/Bill-Murray-Golf.jpg'
 import AudioPlayer from '../AudioPlayer';
+import SongManager from '../SongManager';
  
 function UserHomePage() {
     
@@ -35,6 +36,7 @@ function UserHomePage() {
                         <AudioPlayer tracks={tracks} user={sessionUser}/>
                     </div>
                 </div>
+                <SongManager />
             </div>
 
         )       
