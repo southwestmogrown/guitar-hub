@@ -1,0 +1,238 @@
+.song-manager__title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e8a020;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+/* ── Upload form ─────────────────────────────────────────────────── */
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.upload-form__row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.upload-form input[type='text'] {
+    background: #141414;
+    border: 1px solid #333;
+    border-radius: 3px;
+    color: #e0e0e0;
+    font-size: 0.85rem;
+    height: 34px;
+    padding: 0 0.75rem;
+    flex: 1;
+    min-width: 140px;
+    transition: border-color 0.15s;
+}
+
+.upload-form input[type='text']:focus {
+    outline: none;
+    border-color: #e8a020;
+}
+
+.upload-form input[type='file'] {
+    color: #666;
+    font-size: 0.8rem;
+    flex: 1;
+}
+
+.upload-form input[type='file']::file-selector-button {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 3px;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.75rem;
+    margin-right: 0.75rem;
+    transition: background 0.15s;
+}
+
+.upload-form input[type='file']::file-selector-button:hover {
+    background: #333;
+}
+
+.upload-form__errors {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.upload-form__errors li {
+    font-size: 0.8rem;
+    color: #e05555;
+}
+
+.btn {
+    background: #e8a020;
+    border: none;
+    border-radius: 3px;
+    color: #111;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.5rem 1.25rem;
+    text-transform: uppercase;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+
+.btn:hover { background: #f0b040; }
+
+.btn--secondary {
+    background: #2a2a2a;
+    color: #aaa;
+    border: 1px solid #444;
+}
+.btn--secondary:hover { background: #333; color: #ddd; }
+
+.btn--small {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.9rem;
+}
+
+/* ── Song list ───────────────────────────────────────────────────── */
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.song-card {
+    background: #1a1a1a;
+    border: 1px solid #2e2e2e;
+    border-radius: 3px;
+    padding: 0.75rem 1rem;
+}
+
+.song-card__title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.song-card__audio {
+    width: 100%;
+    height: 28px;
+    margin-bottom: 0.5rem;
+    accent-color: #e8a020;
+}
+
+.song-card__actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ── Stem poller ─────────────────────────────────────────────────── */
+.stem-poller {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #2e2e2e;
+}
+
+.stem-poller__status {
+    font-size: 0.8rem;
+    color: #777;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stem-poller__error {
+    font-size: 0.8rem;
+    color: #e05555;
+}
+
+.stem-spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #333;
+    border-top-color: #e8a020;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Stem cards ──────────────────────────────────────────────────── */
+.stem-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.stem-card {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 0.6rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.stem-card__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e8a020;
+}
+
+.stem-card__row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.stem-card__title-input {
+    background: #141414;
+    border: 1px solid #333;
+    border-radius: 3px;
+    color: #e0e0e0;
+    font-size: 0.8rem;
+    height: 28px;
+    padding: 0 0.6rem;
+    flex: 1;
+    min-width: 100px;
+    transition: border-color 0.15s;
+}
+
+.stem-card__title-input:focus {
+    outline: none;
+    border-color: #e8a020;
+}
+
+.stem-card__published {
+    font-size: 0.78rem;
+    color: #4caf50;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.empty-msg {
+    font-size: 0.85rem;
+    color: #555;
+}

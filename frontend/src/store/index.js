@@ -4,14 +4,14 @@ import thunk from 'redux-thunk';
 import session from "./session";
 import users from './users';
 import tracks from './tracks';
-import songs from './songs';
+import mixes from './mixes';
 import stems from './stems';
 
 const rootReducer = combineReducers({
     session,
     users,
     tracks,
-    songs,
+    mixes,
     stems,
 });
 

@@ -1,49 +1,77 @@
-
-.login-form-main {
+.modal-form {
     display: flex;
-    justify-content: center;
-    background-color: black;
-    align-items: center;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
-
-.login-form {
-    background-color: rgb(82, 80, 80);
-    border-radius: 5px;
-    box-shadow: 6px 3px 3px  rgba(0, 0, 0, 0.2);
+.modal-form__title {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e8a020;
+    margin-bottom: 0.25rem;
 }
 
+.modal-form__errors {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-.login-btn-container {
+.modal-form__errors li {
+    font-size: 0.8rem;
+    color: #e05555;
+    padding: 0.25rem 0;
+}
+
+.modal-form__field {
     display: flex;
-    justify-content: flex-end;
-} 
-
-
-input {
-    border: 1px solid black;
-    border-radius: 5px;
-    display: grid;
-    grid-template-rows: 25% 25% 25% 25%;
-    box-sizing: content-box;
-    width: 300px;
-    height: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    box-shadow: 4px 2px 2px  rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    gap: 0.4rem;
 }
 
-
-.login-form li {
-    color: rgb(235, 74, 74);
-} 
-
-.login-btn {
-    padding: 8px;
-    background-color: rgb(56, 41, 2);
+.modal-form__field label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #777;
 }
 
-.login-btn:hover {
-    background-color: rgb(255, 199, 58);
-    box-shadow: 2px 2px 10px rgba(255, 199, 58, 0.802), 2px 2px 15px rgba(255, 199, 58, 0.802);
+.modal-form__field input {
+    background: #141414;
+    border: 1px solid #333;
+    border-radius: 3px;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    height: 38px;
+    padding: 0 0.75rem;
+    width: 100%;
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+}
+
+.modal-form__field input:focus {
+    outline: none;
+    border-color: #e8a020;
+}
+
+.modal-form__submit {
+    align-self: flex-end;
+    background: #e8a020;
+    border: none;
+    border-radius: 3px;
+    color: #111;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    padding: 0.6rem 1.5rem;
+    text-transform: uppercase;
+    transition: background 0.15s;
+}
+
+.modal-form__submit:hover {
+    background: #f0b040;
 }

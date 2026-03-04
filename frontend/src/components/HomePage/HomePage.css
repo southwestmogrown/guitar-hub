@@ -1,36 +1,136 @@
-.home-page {
-    height: 100vh;
-    background-image: url('../../media/sound-studo-393042_1920.jpg');
-    position: relative;
+/* ── Splash layout ───────────────────────────────────────────────── */
+.splash {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem 4rem;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #e0e0e0;
 }
 
-.layer {
-    background-color: rgba(0, 0, 0, 0.508);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* ── Hero ────────────────────────────────────────────────────────── */
+.splash__hero {
+  text-align: center;
+  max-width: 640px;
+  margin-bottom: 4rem;
 }
 
-.welcome-container {
-    margin-top: 75px;
-    display: flex;
-    justify-content: center;
-    
+.splash__logo {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #e8a020;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
 }
 
-.welcome {
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
-    width: 300px;
-    height: 500px;
-    background-color: darkgray;
+.splash__tagline {
+  font-size: 1.25rem;
+  color: #c0a060;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem;
 }
 
-.welcome h2 {
-    font-weight: bold;
-    padding-top: 5px;
-    text-shadow: 1px 1px 3px rgb(87, 87, 87);
+.splash__sub {
+  font-size: 0.975rem;
+  color: #888;
+  line-height: 1.7;
+  margin: 0 0 2.5rem;
+}
+
+/* ── CTA buttons ─────────────────────────────────────────────────── */
+.splash__cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Target the buttons rendered by each modal/demo component */
+.splash__cta button,
+.splash__cta .demo-login button,
+.splash__cta .login-modal-btn,
+.splash__cta .signup-modal-btn {
+  padding: 0.65rem 1.75rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+/* Sign Up — primary accent */
+.splash__cta .signup-modal-btn {
+  background: #e8a020;
+  color: #111;
+}
+.splash__cta .signup-modal-btn:hover {
+  background: #f0b040;
+}
+
+/* Log In — outlined */
+.splash__cta .login-modal-btn {
+  background: transparent;
+  color: #e8a020;
+  border: 1px solid #e8a020;
+}
+.splash__cta .login-modal-btn:hover {
+  background: rgba(232, 160, 32, 0.1);
+}
+
+/* Demo — muted */
+.splash__cta .demo-login-btn {
+  background: #2e2e2e;
+  color: #aaa;
+  border: 1px solid #444;
+}
+.splash__cta .demo-login-btn:hover {
+  background: #383838;
+  color: #ddd;
+}
+
+/* ── Feature cards ───────────────────────────────────────────────── */
+.splash__features {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 860px;
+}
+
+.splash__feature-card {
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 1.75rem 1.5rem;
+  width: 240px;
+  text-align: center;
+}
+
+.splash__feature-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.splash__feature-card h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #e8a020;
+  margin: 0 0 0.5rem;
+}
+
+.splash__feature-card p {
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.6;
+  margin: 0;
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-
+import '../LoginFormModal/LoginForm.css';
 import './SignupForm.css';
 
 function SignupFormPage() {
@@ -11,77 +11,70 @@ function SignupFormPage() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    if(sessionUser) return <Redirect to='/' />
-     
+    if (sessionUser) return <Redirect to='/' />;
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(password === confirmPassword) {
-            setErrors([]);
-            return dispatch(sessionActions.signup({ username, email, password }))
-              .catch(async (res) => {
+        if (password !== confirmPassword) {
+            return setErrors(['Passwords do not match.']);
+        }
+        setErrors([]);
+        return dispatch(sessionActions.signup({ username, email, password }))
+            .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
-        }
-        return setErrors(['Confirm Password field must be the same as the Password field.'])
-      }
+    };
 
     return (
-        <div className='signup-form-main'>
-            <div className='signup-form-container'>
-                <form onSubmit={handleSubmit} className='signup-form'>
-                    <ul>
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
-                    <div className='username-container'>
-                        <label htmlFor='username-input'>Username</label>
-                        <input 
-                            className='username-input'
-                            type='text'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className='email-container'>
-                        <label htmlFor='email-input'>Email</label>
-                        <input 
-                            className='email-input'
-                            type='text'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className='password-container'>
-                        <label htmlFor='password-input'>Password</label>
-                        <input
-                            className='password-input'
-                            type='password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className='confirm-password-container'>
-                        <label htmlFor='confirm-password-input'>Confirm Password</label>
-                        <input
-                            className='confirm-password-input'
-                            type='password'
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className='signup-btn-container'>
-                        <button className='signup-btn' type='submit'>Sign Up</button>
-                    </div>
-                </form>    
+        <form onSubmit={handleSubmit} className='modal-form'>
+            <h2 className='modal-form__title'>Create Account</h2>
+            {errors.length > 0 && (
+                <ul className='modal-form__errors'>
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
+            )}
+            <div className='modal-form__field'>
+                <label>Username</label>
+                <input
+                    type='text'
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
             </div>
-        </div>
+            <div className='modal-form__field'>
+                <label>Email</label>
+                <input
+                    type='text'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </div>
+            <div className='modal-form__field'>
+                <label>Password</label>
+                <input
+                    type='password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+            </div>
+            <div className='modal-form__field'>
+                <label>Confirm Password</label>
+                <input
+                    type='password'
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                />
+            </div>
+            <button className='modal-form__submit' type='submit'>Create Account</button>
+        </form>
     );
 }
 

@@ -17,9 +17,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Tracks' }
       },
-      songId: {
+      mixId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Songs' }
+        references: { model: 'Mixes' }
       },
       body: {
         type: Sequelize.STRING(255)

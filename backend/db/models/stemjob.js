@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const StemJob = sequelize.define('StemJob', {
-    songId: {
+    mixId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   StemJob.associate = function(models) {
-    StemJob.belongsTo(models.Song, { foreignKey: 'songId' });
+    StemJob.belongsTo(models.Mix, { foreignKey: 'mixId' });
     StemJob.hasMany(models.Stem, { foreignKey: 'stemJobId' });
   };
   return StemJob;

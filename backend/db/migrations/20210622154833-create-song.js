@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Songs', {
+    return queryInterface.createTable('Mixes', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,14 +15,14 @@ module.exports = {
       imageUrl: {
         type: Sequelize.STRING
       },
-      songUrl: {
+      mixUrl: {
         allowNull: false,
         type: Sequelize.STRING(255)
       },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Users'}
+        references: { model: 'Users' }
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Songs');
+    return queryInterface.dropTable('Mixes');
   }
 };

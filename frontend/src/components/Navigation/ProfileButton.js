@@ -32,23 +32,21 @@ function ProfileButton({ user }) {
     };
 
     return (
-        <div className='nav-bar'>
-            <div className='profile-button-container'>
-                <button className='profile-btn' onClick={openMenu}>
-                    <i className='fas fa-user-circle' />
-                </button>
-            </div>
-        {showMenu && (
-        <div className='dropdown-wrapper'>
-            <ul className='profile-dropdown'>
-                <li>{user.username}</li>
-                <li>{user.email}</li>
-                <li>
-                    <button onClick={logout}>Log Out</button>
-                </li>
-            </ul>
-        </div>    
-        )}
+        <div>
+            <button className='profile-btn' onClick={openMenu}>
+                <i className='fas fa-user-circle' />
+            </button>
+            {showMenu && (
+                <div className='dropdown-wrapper'>
+                    <ul className='profile-dropdown'>
+                        <li>{user.username}</li>
+                        <li>{user.email}</li>
+                        <li>
+                            <button onClick={logout}>Log Out</button>
+                        </li>
+                    </ul>
+                </div>
+            )}
         </div>
     );
 

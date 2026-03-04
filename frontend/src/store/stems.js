@@ -6,8 +6,8 @@ const LOAD_STEMS = 'stems/LOAD_STEMS';
 const loadJob = (job) => ({ type: LOAD_JOB, job });
 const loadStems = (stems) => ({ type: LOAD_STEMS, stems });
 
-export const triggerSplit = (songId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/stems/split/${songId}`, { method: 'POST' });
+export const triggerSplit = (mixId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/stems/split/${mixId}`, { method: 'POST' });
   if (res.ok) {
     const data = await res.json();
     dispatch(loadJob(data.stemJob));
@@ -15,8 +15,8 @@ export const triggerSplit = (songId) => async (dispatch) => {
   }
 };
 
-export const pollJobStatus = (songId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/stems/job/${songId}`);
+export const pollJobStatus = (mixId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/stems/job/${mixId}`);
   if (res.ok) {
     const data = await res.json();
     dispatch(loadJob(data.stemJob));

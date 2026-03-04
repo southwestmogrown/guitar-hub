@@ -1,47 +1,40 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as userActions from '../../store/users';
-import * as trackActions from '../../store/tracks'
 import { Redirect } from 'react-router';
-
-
-import './UserHomePage.css';
-import bill from '../../media/Bill-Murray-Golf.jpg'
+import * as trackActions from '../../store/tracks';
 import AudioPlayer from '../AudioPlayer';
-import SongManager from '../SongManager';
- 
+import MixManager from '../MixManager';
+import './UserHomePage.css';
+
 function UserHomePage() {
-    
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const tracks = useSelector(state => state.tracks.tracks)
+
     useEffect(() => {
-        dispatch(userActions.getUsers())
-        dispatch(trackActions.getTracks())
+        dispatch(trackActions.getTracks());
     }, [dispatch]);
 
+    if (!sessionUser) return <Redirect to='/' />;
 
-
-    if(!sessionUser) {
-        return <Redirect to='/' />
-    } else {
-        return(
-            <div className='profile-page'>
-                <div className='layer'>
-                    <div className='profile-img'>
-                        <div className='shadow-box'></div>
-                        <img className='profile' src={bill} alt={sessionUser.username}></img>
-                    </div>
-                    <div className='profile-audio'>
-                        <AudioPlayer tracks={tracks} user={sessionUser}/>
-                    </div>
-                </div>
-                <SongManager />
+    return (
+        <div className='dashboard'>
+            <div className='dashboard__header'>
+                <h1 className='dashboard__greeting'>
+                    Welcome back, <span>{sessionUser.username}</span>
+                </h1>
             </div>
-
-        )       
-    }
-        
+            <div className='dashboard__body'>
+                <section className='dashboard__panel'>
+                    <h2 className='dashboard__panel-title'>Tracks</h2>
+                    <AudioPlayer />
+                </section>
+                <section className='dashboard__panel'>
+                    <h2 className='dashboard__panel-title'>Mixes</h2>
+                    <MixManager />
+                </section>
+            </div>
+        </div>
+    );
 }
 
 export default UserHomePage;

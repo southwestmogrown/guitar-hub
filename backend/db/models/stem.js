@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Stem = sequelize.define('Stem', {
-    songId: {
+    mixId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Stem.associate = function(models) {
-    Stem.belongsTo(models.Song, { foreignKey: 'songId' });
+    Stem.belongsTo(models.Mix, { foreignKey: 'mixId' });
     Stem.belongsTo(models.StemJob, { foreignKey: 'stemJobId' });
   };
   return Stem;

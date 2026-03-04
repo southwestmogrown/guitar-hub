@@ -28,8 +28,8 @@ function App() {
               <Route path='/signup'>
                 <SignUpFormModal />
               </Route>
-              <Route path={`/users/${user.id}`}>
-                <UserHomePage />   
+              <Route path={`/users`}>
+                <UserHomePage />
               </Route>
             </Switch>
           )}

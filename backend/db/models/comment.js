@@ -1,14 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', {
-    userId:{ 
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
     trackId: {
       type: DataTypes.INTEGER
     },
-    songId: {
+    mixId: {
       type: DataTypes.INTEGER
     },
     body: {
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   Comment.associate = function(models) {
     Comment.belongsTo(models.User, { foreignKey: 'userId' });
     Comment.belongsTo(models.Track, { foreignKey: 'trackId' });
-    Comment.belongsTo(models.Song, { foreignKey: 'songId' });
+    Comment.belongsTo(models.Mix, { foreignKey: 'mixId' });
   };
   return Comment;
 };

@@ -1,6 +1,9 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
 const apiRouter = require('./api');
+
+router.use('/media', express.static(path.resolve(__dirname, '../public/media')));
 
 router.use('/api', apiRouter);
 

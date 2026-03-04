@@ -1,66 +1,62 @@
-.profile-img {
-    height: 0px;
+.dashboard {
+    min-height: calc(100vh - 48px);
+    background: #1a1a1a;
+    padding: 2rem 2rem 4rem;
 }
 
-
-.profile {
-    margin-top: 2em;
-    margin-left: 3em;
-    max-height: 200px;
-    width: 200px;
-    border-radius: 50%;
+.dashboard__header {
+    border-bottom: 1px solid #2a2a2a;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
-.track-player {
-    list-style-type: none;
-    margin-left: 25em;
-    margin-top: 5em;
+.dashboard__greeting {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #666;
+    text-transform: uppercase;
 }
 
-.profile-page {
-    height: 100vh;
-    background-image: url('../../media/sound-studo-393042_1920.jpg');
-    position: relative;
+.dashboard__greeting span {
+    color: #e8a020;
+    font-weight: 700;
 }
 
-.audio-container {
-    display: flex;
-    justify-content: center;
+/* ── Two-column body ─────────────────────────────────────────────── */
+.dashboard__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
 }
 
-.audio-player-list {
-    list-style-type: none;
+@media (max-width: 900px) {
+    .dashboard__body {
+        grid-template-columns: 1fr;
+    }
 }
 
-.profile-audio {
-    position: absolute;
-    left: 500px;
-    top: 75px;
-    height: auto;
-    display: flex;
-    justify-content: center;
+/* ── Panels ──────────────────────────────────────────────────────── */
+.dashboard__panel {
+    background: #222;
+    border: 1px solid #2e2e2e;
+    border-radius: 4px;
+    padding: 1.5rem;
 }
 
-.audio-player-list li {
-    margin: 5px;
+.dashboard__panel-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e8a020;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #2e2e2e;
 }
 
-.profile-img {
-    position: relative;
-    margin-top: 60px;
-    height: 235px;
-    width: 250px;
-}
-
-.shadow-box {
-    border-radius: 50%;
-    margin-top: 32px;
-    margin-left: 48px;
-    z-index: 1;
-    position: absolute;
-    background-color: rgba(252, 252, 252, 0);
-    height: 200px;
-    width: 200px;
-    box-shadow: inset -5px -5px 5px 1px rgba(0, 0, 0, 0.494), 
-                inset 5px 5px 5px 1px rgba(255, 254, 254, 0.250)
+.audio-empty {
+    color: #555;
+    font-size: 0.85rem;
 }

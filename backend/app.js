@@ -9,7 +9,7 @@ const asyncHandler = require('express-async-handler');
 
 const { environment } = require('./config');
 const routes = require('./routes');
-const { StemJob, Stem } = require('./db/models');
+const { Mix, StemJob, Stem } = require('./db/models');
 
 const isProduction = environment === 'production';
 
@@ -35,7 +35,7 @@ app.post('/internal/stems/callback', express.json(), asyncHandler(async (req, re
     }
     const { song_id, status, stems, error } = req.body;
     const stemJob = await StemJob.findOne({
-        where: { songId: song_id },
+        where: { mixId: song_id },
         order: [['createdAt', 'DESC']]
     });
     if (!stemJob) return res.status(404).json({ error: 'Job not found.' });
@@ -43,7 +43,7 @@ app.post('/internal/stems/callback', express.json(), asyncHandler(async (req, re
     if (status === 'complete') {
         await stemJob.update({ status: 'complete' });
         await Stem.bulkCreate(stems.map(stemType => ({
-            songId: song_id,
+            mixId: song_id,
             stemJobId: stemJob.id,
             stemType,
             url: `/media/stems/${song_id}/${stemType}.mp3`

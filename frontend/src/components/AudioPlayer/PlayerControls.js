@@ -1,26 +1,13 @@
-import React, { useEffect } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
-
-function PlayerControls(props) {
-    
-    useEffect(() => {
-        if (props.currentTime === props.duration) {
-            props.setIsPlaying(false)    
-            props.setIsPlaying(true)
-        };
-
-
-    }, [props])
-
+function PlayerControls({ isPlaying, setIsPlaying }) {
     return (
         <div className='c-player--controls'>
-            <button className='play-btn' onClick={() => props.setIsPlaying(!props.isPlaying)}>
-                <FontAwesomeIcon icon={props.isPlaying ? faPlay : faPause } />
+            <button className='play-btn' onClick={() => setIsPlaying(!isPlaying)}>
+                {isPlaying ? '⏸' : '▶'}
             </button>
         </div>
-    )
+    );
 }
 
-export default PlayerControls
+export default PlayerControls;
