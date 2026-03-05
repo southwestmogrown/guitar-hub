@@ -81,4 +81,16 @@ router.post('/publish', requireAuth, asyncHandler(async (req, res) => {
   return res.status(201).json({ track });
 }));
 
+// DELETE /api/stems/:stemId — delete a stem
+router.delete('/:stemId', requireAuth, asyncHandler(async (req, res) => {
+  const stem = await Stem.findOne({
+    where: { id: req.params.stemId },
+    include: [{ model: Mix, where: { userId: req.user.id } }]
+  });
+  if (!stem) return res.status(404).json({ error: 'Stem not found.' });
+
+  await stem.destroy();
+  return res.json({ deleted: true });
+}));
+
 module.exports = router;

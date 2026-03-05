@@ -7,6 +7,33 @@
     margin: 0;
 }
 
+/* ── Track owner actions ─────────────────────────────────────────── */
+.track-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.track-title-input {
+    background: #141414;
+    border: 1px solid #333;
+    border-radius: 3px;
+    color: #e0e0e0;
+    font-size: 0.8rem;
+    height: 28px;
+    padding: 0 0.6rem;
+    flex: 1;
+    min-width: 100px;
+    transition: border-color 0.15s;
+}
+
+.track-title-input:focus {
+    outline: none;
+    border-color: #e8a020;
+}
+
 /* ── Individual track card ───────────────────────────────────────── */
 .c-player {
     background: #1a1a1a;

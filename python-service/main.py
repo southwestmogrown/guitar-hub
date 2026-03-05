@@ -1,4 +1,3 @@
-import os
 import shutil
 import subprocess
 import requests
@@ -8,9 +7,14 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# In-memory job status tracker
+MODEL = "htdemucs_6s"
+SHIFTS = 0  # Set to 1 for better quality in production (slower)
+STEM_TYPES = ["vocals", "drums", "bass", "guitar", "piano", "other"]
+
+
 class JobStatus:
     jobs: dict = {}
+
 
 class ProcessRequest(BaseModel):
     song_path: str
@@ -23,34 +27,38 @@ def run_demucs(song_path: str, song_id: int, callback_url: str):
     output_dir.mkdir(parents=True, exist_ok=True)
 
     try:
-        result = subprocess.run(
-            ["python", "-m", "demucs", "-n", "htdemucs", "--mp3", "-o", str(output_dir), song_path],
+        subprocess.run(
+            [
+                "python", "-m", "demucs",
+                "-n", MODEL,
+                "--shifts", str(SHIFTS),
+                "--mp3",
+                "-o", str(output_dir),
+                song_path
+            ],
             capture_output=True,
             text=True,
             check=True
         )
 
-        # Demucs writes to output_dir/htdemucs/<track_basename>/
         song_basename = Path(song_path).stem
-        stem_source_dir = output_dir / "htdemucs" / song_basename
+        stem_source_dir = output_dir / MODEL / song_basename
 
-        stem_types = ["vocals", "drums", "bass", "other"]
-        for stem_type in stem_types:
+        for stem_type in STEM_TYPES:
             src = stem_source_dir / f"{stem_type}.mp3"
             dst = output_dir / f"{stem_type}.mp3"
             if src.exists():
                 shutil.move(str(src), str(dst))
 
-        # Clean up the htdemucs subdirectory
-        htdemucs_dir = output_dir / "htdemucs"
-        if htdemucs_dir.exists():
-            shutil.rmtree(str(htdemucs_dir))
+        model_dir = output_dir / MODEL
+        if model_dir.exists():
+            shutil.rmtree(str(model_dir))
 
         JobStatus.jobs[song_id] = "complete"
         requests.post(callback_url, json={
             "song_id": song_id,
             "status": "complete",
-            "stems": stem_types
+            "stems": STEM_TYPES
         })
 
     except Exception as e:

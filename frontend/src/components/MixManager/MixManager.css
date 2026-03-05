@@ -101,6 +101,13 @@
 }
 .btn--secondary:hover { background: #333; color: #ddd; }
 
+.btn--danger {
+    background: transparent;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+}
+.btn--danger:hover { background: rgba(192, 57, 43, 0.15); }
+
 .btn--small {
     font-size: 0.75rem;
     padding: 0.35rem 0.9rem;

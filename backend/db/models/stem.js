@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     stemType: {
-      type: DataTypes.ENUM('vocals', 'drums', 'bass', 'other'),
+      type: DataTypes.ENUM('vocals', 'drums', 'bass', 'guitar', 'piano', 'other'),
       allowNull: false,
     },
     url: {

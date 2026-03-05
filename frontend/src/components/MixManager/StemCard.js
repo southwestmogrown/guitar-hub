@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { publishStem } from '../../store/stems';
+import { publishStem, deleteStem } from '../../store/stems';
 
-const LABELS = { vocals: 'Vocals', drums: 'Drums', bass: 'Bass', other: 'Other' };
+const LABELS = { vocals: 'Vocals', drums: 'Drums', bass: 'Bass', guitar: 'Guitar', piano: 'Piano', other: 'Other' };
 
 function StemCard({ stem }) {
     const dispatch = useDispatch();
@@ -11,6 +11,7 @@ function StemCard({ stem }) {
     const [title, setTitle] = useState(LABELS[stem.stemType] || stem.stemType);
     const [published, setPublished] = useState(false);
     const [publishing, setPublishing] = useState(false);
+    const [deleted, setDeleted] = useState(false);
 
     const togglePlay = () => {
         if (!audioRef.current) return;
@@ -21,6 +22,8 @@ function StemCard({ stem }) {
         }
         setPlaying(!playing);
     };
+
+    const handleDelete = () => dispatch(deleteStem(stem.id));
 
     const handlePublish = async () => {
         setPublishing(true);
@@ -33,6 +36,8 @@ function StemCard({ stem }) {
             setPublishing(false);
         }
     };
+
+    if (deleted) return null;
 
     return (
         <div className='stem-card'>
@@ -62,6 +67,11 @@ function StemCard({ stem }) {
                         disabled={publishing || !title.trim()}
                     >
                         {publishing ? 'Publishing…' : 'Publish'}
+                    </button>
+                )}
+                {!published && (
+                    <button className='btn btn--danger btn--small' onClick={handleDelete}>
+                        Delete
                     </button>
                 )}
             </div>
